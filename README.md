@@ -1,2 +1,54 @@
-# Kranker3D
-I try to learn openGL by making a 3D engine.
+# Kranker3D - Simple rendering engine 
+
+I am building this 3D rendering engine to learn openGL and make demoscene.
+I started with absolutely no knowledge about GPU programming, so it's quite possible that there's a lot of flaws in this project. 
+I'm open to any kind of criticism that could help me improve ! 
+
+If anyone's interested in mentoring me on this project, here's my twitter account : [@KrankerApfel](https://twitter.com/krankerapfel	)
+
+This project is a Visual Studio solution and it used OpenGL, GLAD, glm and SFML.
+
+## Helping ressources 
+
+I'm learning from severals ressources, here the list below. 
+
+* [opengl-tutorial french website](http://www.opengl-tutorial.org/fr/)
+* "Algorithmes pour la synthèse d'images et l'animation 3D", Rémy Malgouyres (french book)
+* "Ray Marching and Signed Distance Functions", Jamie Wong ([english website](http://jamie-wong.com/2016/07/15/ray-marching-signed-distance-functions/))
+* [Inigo Quilez english blog](https://iquilezles.org/www/index.htm)
+* [Inigo Quilez english youtube channel](https://www.youtube.com/channel/UCdmAhiG8HQDlz8uyekw4ENw)
+* [LearnOpenGl.org english website to learn modern OpenGL](https://learnopengl.com/Getting-started/OpenGL)
+* [The Cherno game engine youtube serie](https://youtu.be/JxIZbV_XjAs)
+* OpenGL and Math lessons at my school
+
+## Folders structure
+
+* dll : store dlls :trollface: .
+* resources : store ressource files (.obj, .bmp, .wav etc...).
+* vendor : store dependencies
+* src : store all Kranker3D logic.
+	- core : engine core scripts 
+	    - io : store I/O helpers...
+		- objects : engine object script as camera, scene etc...
+		- rendering : store class of objects involved in rendering (shader, mesh etc..)
+			* pipeline : store rendering logic (SDFs, raymarching etc..)
+			
+	- ui : store ui logic
+
+# Roadmap V 1.0
+
+## Core 
+- [ ] A correct config file
+- [ ] Logger 
+- [x] File reader
+
+## Objects 
+-  [ ] Camera
+
+## Rendering  
+- [x] Shader class
+- [x] Mesh class 
+- [ ] Material class 
+- [ ] Model class
+- [ ] Renderer class
+- [ ] Raymarching
