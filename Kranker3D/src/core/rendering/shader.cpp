@@ -20,7 +20,7 @@ void Kranker3D::Shader::linkProgramme(GLuint vertexShaderId, GLuint fragmentShad
 {
 	programId = glCreateProgram();
 	if (programId == 0 || programId == GL_INVALID_OPERATION)
-		spdlog::warn("SHADER","Not able to create the shader object properly.\n Program ID :  {}", programId);
+		spdlog::warn("--- SHADER : Not able to create the shader object properly.\n Program ID :  {}", programId);
 	vertId = vertexShaderId;
 	fragId = fragmentShaderId;
 	glAttachShader(programId, vertId);
@@ -39,11 +39,11 @@ void Kranker3D::Shader::compileStatus(GLuint shaderId)
 	if (!success)
 	{
 		glGetShaderInfoLog(shaderId, 512, NULL, infoLog);
-		spdlog::warn("SHADER"," Shader {} did not compile ! \n===\n%s\n===\n {}", shaderId, infoLog);
+		spdlog::warn("--- SHADER : Shader {} did not compile ! \n===\n%s\n===\n {}", shaderId, infoLog);
 	}
 	else
 	{
-		spdlog::info("SHADER","Shader {} loaded and compiled proprely\n", shaderId);
+		spdlog::info("--- SHADER : Shader {} loaded and compiled proprely\n", shaderId);
 	}
 }
 
@@ -56,19 +56,19 @@ void Kranker3D::Shader::linkStatus()
 	if (!linkStatus)
 	{
 		glGetProgramInfoLog(programId, 512, NULL, infoLog);
-		spdlog::error("SHADER", " Program linking failed : \n===\n%s\n===\n {}", infoLog);
+		spdlog::error("--- SHADER : Program linking failed : \n===\n%s\n===\n {}", infoLog);
 	}
 	else {
-		spdlog::info("SHADER", " Program {} link properly\n", programId);
+		spdlog::info("--- SHADER : Program {} link properly\n", programId);
 		glGetProgramiv(programId, GL_COMPILE_STATUS, &success);
 		if (!success)
 		{
 			glGetProgramInfoLog(programId, 512, NULL, infoLog);
-			spdlog::error("SHADER"," Program did not compile : \n===\n%s\n===\n {}", infoLog);
+			spdlog::error("--- SHADER : Program did not compile : \n===\n%s\n===\n {}", infoLog);
 		}
 		else
 		{
-			spdlog::info("SHADER", " Program {} loaded and compiled proprely.\n", programId);
+			spdlog::info("--- SHADER : Program {} loaded and compiled proprely.\n", programId);
 		}
 	}
 

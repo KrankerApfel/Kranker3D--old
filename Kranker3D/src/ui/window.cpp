@@ -8,11 +8,11 @@ Kranker3D::Window::Window(int width, int height, const std::string& title, GLFWm
 	initContext();
 	_window = glfwCreateWindow(width, height, title.c_str(), monitor, share);
 	if (!_window) {
-		spdlog::error("GLFW", "Window creation failed.");
+		spdlog::error("--- GLFW : Window creation failed.");
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
-	spdlog::info("GLFW", "Fullscreen : " + (monitor != NULL));
+	spdlog::info("--- GLFW : Fullscreen : " + (monitor != NULL));
 	glfwMakeContextCurrent(_window);
 	initGlad();
 	glViewport(0, 0, width, height);
@@ -23,11 +23,10 @@ Kranker3D::Window::Window(int width, int height, const std::string& title, GLFWm
 
 void Kranker3D::Window::run()
 {
-	while (isOpen())
-	{
-		glfwSwapBuffers(_window);
-		glfwPollEvents();
-	}
+
+	glfwSwapBuffers(_window);
+	glfwPollEvents();
+	glClear(GL_COLOR_BUFFER_BIT || GL_DEPTH_BUFFER_BIT);
 }
 
 bool Kranker3D::Window::isOpen()
@@ -37,7 +36,7 @@ bool Kranker3D::Window::isOpen()
 
 void Kranker3D::Window::terminate()
 {
-	spdlog::info("GLFW", "Terminate window");
+	spdlog::info("--- GLFW : Terminate window");
 	glfwTerminate();
 }
 
@@ -45,7 +44,7 @@ void Kranker3D::Window::initContext()
 {
 	if (!glfwInit())
 	{
-		spdlog::error("GLFW", "Failed to init GLFW");
+		spdlog::error("--- GLFW : Failed to init GLFW");
 		exit(EXIT_FAILURE);
 	}
 
@@ -53,7 +52,7 @@ void Kranker3D::Window::initContext()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	spdlog::info("GLFW", "Initialize with OpenGL " + GLFW_CONTEXT_VERSION_MAJOR + '.' + GLFW_CONTEXT_VERSION_MINOR);
+	spdlog::info("--- GLFW : Initialize with OpenGL " + GLFW_CONTEXT_VERSION_MAJOR + '.' + GLFW_CONTEXT_VERSION_MINOR);
 
 }
 
@@ -61,7 +60,7 @@ void Kranker3D::Window::initGlad()
 {
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		spdlog::error("GLAD", "GLAD did not initialize");
+		spdlog::error("--- GLAD : glad failed to initialize");
 		exit(EXIT_FAILURE);
 	}
 }

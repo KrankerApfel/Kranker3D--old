@@ -67,16 +67,38 @@
 
 #include "stdafx.h"
 #include "src/ui/window.h"
+#include "src/core/rendering/shader.h"
+#include "src/core/rendering/mesh.h"
 using namespace std;
 using namespace Kranker3D;
 
 int main()
 {
-    // 1. initialization
-    Window w(800,800,"Gegege no Kitaro");
-    
-    // 2. rendering
-    w.run();
-    // 3. terminate
+	// 1. initialization
+	Window w(800, 800, "Gegege no Kitaro");
+	Shader s("resources\\shaders\\test_vertex.glsl", "resources\\shaders\\test_fragment.glsl");
+
+	vector<Kranker3D::Vertex> vertices;
+	vector<unsigned int> indices;
+
+	vertices.push_back(Kranker3D::Vertex{ glm::vec3 (-0.5f, -0.5f, 0.0f )});
+	vertices.push_back(Kranker3D::Vertex{ glm::vec3 (0.5f, -0.5f, 0.0f)});
+	vertices.push_back(Kranker3D::Vertex{ glm::vec3 (0.0f,  0.5f, 0.0f)});
+	indices.push_back(0);
+	indices.push_back(2);
+	indices.push_back(1);
+	Mesh m(vertices, indices);
+
+	// 2. rendering
+	while (w.isOpen())
+	{
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		s.use();
+		m.draw();
+		w.run();
+	}
+	// 3. terminate
+	s.terminate();
+	m.terminate();
 }
 
