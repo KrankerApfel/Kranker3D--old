@@ -41,5 +41,8 @@
     <ClInclude Include="src\ui\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\rendering\shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

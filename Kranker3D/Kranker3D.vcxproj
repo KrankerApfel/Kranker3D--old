@@ -120,12 +120,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)vendor\GLAD\include;$(ProjectDir)vendor\glfw\include;$(ProjectDir)vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendor\GLAD\include;$(ProjectDir)vendor\glfw\include;$(ProjectDir)vendor\spdlog\include;D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\GLAD\src;$(ProjectDir)vendor\glfw\src;$(ProjectDir)vendor\glm\glm;$(ProjectDir)vendor\imgui;$(ProjectDir)vendor\spdlog\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\GLAD\src;$(ProjectDir)vendor\glfw\src;D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\glm\glm;$(ProjectDir)vendor\imgui;$(ProjectDir)vendor\spdlog\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -144,7 +144,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\GLAD\src;$(ProjectDir)vendor\glfw\src;$(ProjectDir)vendor\glm\glm;$(ProjectDir)vendor\imgui;$(ProjectDir)vendor\spdlog\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\GLAD\src;$(ProjectDir)vendor\glfw\src;D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\glm\glm;$(ProjectDir)vendor\imgui;$(ProjectDir)vendor\spdlog\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\io\file.h" />
+    <ClInclude Include="src\core\rendering\shader.h" />
     <ClInclude Include="src\ui\window.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
