@@ -76,6 +76,29 @@
 using namespace std;
 using namespace Kranker3D;
 
+Mesh setDragoon( vector<Kranker3D::Vertex>& vertices,  vector<unsigned int>& indices)
+{
+
+	for (int i = 0; i < sizeof(DragonVertices) / sizeof(float) - 7; i += 8)
+	{
+		glm::vec3 pos(DragonVertices[i], DragonVertices[i + 1], DragonVertices[i + 2]);
+		glm::vec3 norm(DragonVertices[i + 3], DragonVertices[i + 4], DragonVertices[i + 5]);
+		glm::vec2 text(DragonVertices[i + 6], DragonVertices[i + 7]);
+		vertices.push_back(Kranker3D::Vertex{ pos, norm, text });
+	}
+
+	for (int i = 0; i < sizeof(DragonIndices) / sizeof(uint16_t); i++) {
+		indices.push_back(DragonIndices[i]);
+	}
+
+	Kranker3D::Mesh dragon_mesh(vertices, indices);
+	dragon_mesh.scale(glm::vec3(0.25f, 0.25f, 0.25f));
+	dragon_mesh.translate(glm::vec3(0.0f, -4, 0.0f));
+	dragon_mesh.rotate(45,glm::vec3(0.0f, 1, 0.0f));
+
+	return dragon_mesh;
+}
+
 int main()
 {
 	// 1. initialization
@@ -86,42 +109,20 @@ int main()
 	vector<Kranker3D::Vertex> vertices;
 	vector<unsigned int> indices;
 
-
-	//Triangle 1
-	vertices.push_back(Vertex{ glm::vec3(0.0f, 1.0f, 0.0f) });  indices.push_back(0);
-	vertices.push_back(Vertex{ glm::vec3(-1.0f, -1.0f, 1.0f) });    indices.push_back(1);
-	vertices.push_back(Vertex{ glm::vec3(1.0f, -1.0f, 1.0f) });    indices.push_back(2);
-	//Triangle 2
-	indices.push_back(0);
-	indices.push_back(1);
-	vertices.push_back(Vertex{ glm::vec3(1.0f, 0.0f, -1.0f) });   indices.push_back(3);
-	//Triangle 3
-	indices.push_back(0);
-	indices.push_back(3);
-	indices.push_back(2);
-	//Triangle 4
-	indices.push_back(3);
-	indices.push_back(2);
-	indices.push_back(1);
-
-	Mesh m(vertices, indices);
-
-	// TRANSFORMATION TEST
-	m.rotate(30, glm::vec3(0.0f, 1.0f, 0.0f));
-
+	Mesh dragon_mesh = setDragoon(vertices, indices);
 	while (w.isOpen())
 	{
 		w.run();
 
-		s.setMat4("transform", m.getTransform());
+		s.setMat4("transform", dragon_mesh.getTransform());
 		s.setMat4("view", cam.getView());
 		s.setMat4("projection", cam.getProj());
 		s.setFloat("iTime", glfwGetTime());
 		s.use();
-		m.draw();
+		dragon_mesh.draw();
 	}
 	// 3. terminate
 	s.terminate();
-	m.terminate();
+	dragon_mesh.terminate();
 }
 
