@@ -12,7 +12,7 @@ Kranker3D::Window::Window(int width, int height, const std::string& title, GLFWm
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
-	spdlog::info("--- GLFW : Fullscreen : " + (monitor != NULL));
+	spdlog::info("--- GLFW : Fullscreen {} ", monitor != NULL);
 	glfwMakeContextCurrent(_window);
 	initGlad();
 	glViewport(0, 0, width, height);
@@ -52,7 +52,7 @@ void Kranker3D::Window::initContext()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	spdlog::info("--- GLFW : Initialize with OpenGL " + GLFW_CONTEXT_VERSION_MAJOR + '.' + GLFW_CONTEXT_VERSION_MINOR);
+	spdlog::info("--- GLFW : Initialize with OpenGL {}.{}", GLFW_CONTEXT_VERSION_MAJOR, GLFW_CONTEXT_VERSION_MINOR);
 
 }
 
