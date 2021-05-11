@@ -17,6 +17,7 @@ Kranker3D::Window::Window(int width, int height, const std::string& title, GLFWm
 	initGlad();
 	glViewport(0, 0, width, height);
 	glfwSetFramebufferSizeCallback(_window, framebuffer_size_callback);
+	glEnable(GL_DEPTH_TEST);
 
 
 }
@@ -26,7 +27,7 @@ void Kranker3D::Window::run()
 
 	glfwSwapBuffers(_window);
 	glfwPollEvents();
-	glClear(GL_COLOR_BUFFER_BIT || GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 bool Kranker3D::Window::isOpen()

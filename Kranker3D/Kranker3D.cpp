@@ -71,6 +71,8 @@
 #include "src/core/rendering/mesh.h"
 #include "resources/meshes/DragonData.h"
 
+#include "src/core/objects/camera.h"
+
 using namespace std;
 using namespace Kranker3D;
 
@@ -78,45 +80,45 @@ int main()
 {
 	// 1. initialization
 	Window w(800, 800, "Gegege no Kitaro");
+	Camera cam(800, 800);
 	Shader s("resources\\shaders\\test_vertex.glsl", "resources\\shaders\\test_fragment.glsl");
 
 	vector<Kranker3D::Vertex> vertices;
 	vector<unsigned int> indices;
 
-	vertices.push_back(Kranker3D::Vertex{ glm::vec3 (-0.5f, -0.5f, 0.0f )});
-	vertices.push_back(Kranker3D::Vertex{ glm::vec3 (0.5f, -0.5f, 0.0f)});
-	vertices.push_back(Kranker3D::Vertex{ glm::vec3 (0.0f,  0.5f, 0.0f)});
+
+	//Triangle 1
+	vertices.push_back(Vertex{ glm::vec3(0.0f, 1.0f, 0.0f) });  indices.push_back(0);
+	vertices.push_back(Vertex{ glm::vec3(-1.0f, -1.0f, 1.0f) });    indices.push_back(1);
+	vertices.push_back(Vertex{ glm::vec3(1.0f, -1.0f, 1.0f) });    indices.push_back(2);
+	//Triangle 2
 	indices.push_back(0);
+	indices.push_back(1);
+	vertices.push_back(Vertex{ glm::vec3(1.0f, 0.0f, -1.0f) });   indices.push_back(3);
+	//Triangle 3
+	indices.push_back(0);
+	indices.push_back(3);
+	indices.push_back(2);
+	//Triangle 4
+	indices.push_back(3);
 	indices.push_back(2);
 	indices.push_back(1);
+
 	Mesh m(vertices, indices);
 
-	for (int i = 0; i < sizeof(DragonVertices) / sizeof(float) - 7; i += 8)
-		//for (int i = 0; i < out_vertices.size()-2; i ++)
-	{
-		glm::vec3 pos(DragonVertices[i], DragonVertices[i + 1], DragonVertices[i + 2]);
-		glm::vec3 norm(DragonVertices[i + 3], DragonVertices[i + 4], DragonVertices[i + 5]);
-		glm::vec2 text(DragonVertices[i + 6], DragonVertices[i + 7]);
-		//glm::vec3 pos(out_vertices[i], out_vertices[i + 1], out_vertices[i + 2]);
-		//glm::vec3 norm(out_normals[i], out_normals[i + 1], out_normals[i + 2]);
-		//glm::vec2 text(out_uvs[i], out_uvs[i + 1]);
-		vertices.push_back(Kranker3D::Vertex{ pos, norm, text });
-	}
+	// TRANSFORMATION TEST
+	m.rotate(30, glm::vec3(0.0f, 1.0f, 0.0f));
 
-	for (int i = 0; i < sizeof(DragonIndices) / sizeof(uint16_t); i++) {
-		indices.push_back(DragonIndices[i]);
-	}
-
-	Kranker3D::Mesh dragon_mesh(vertices, indices);
-
-	// 2. rendering
 	while (w.isOpen())
 	{
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		s.use();
-	//	m.draw();
-		dragon_mesh.draw();
 		w.run();
+
+		s.setMat4("transform", m.getTransform());
+		s.setMat4("view", cam.getView());
+		s.setMat4("projection", cam.getProj());
+		s.setFloat("iTime", glfwGetTime());
+		s.use();
+		m.draw();
 	}
 	// 3. terminate
 	s.terminate();

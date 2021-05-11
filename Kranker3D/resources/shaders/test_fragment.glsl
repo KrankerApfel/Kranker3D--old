@@ -3,5 +3,5 @@
     uniform float iTime;
     void main() 
     {
-        gl_FragColor = vec4(texcoord.x,texcoord.y, sin(iTime) , 1); 
+        gl_FragColor = vec4(texcoord.x,texcoord.y, texcoord.z , 1); 
     }
