@@ -2,27 +2,20 @@
 
 Kranker3D::Object::Object()
 {
-	mesh = Mesh();
-	shader = Shader();
-	texture = 0;
+	_transform = Transform();
 }
 
-Kranker3D::Object::Object(Mesh mesh, Shader shader, GLuint texture)
+Kranker3D::Object::Object(Transform t)
 {
-	this->mesh = mesh;
-	this->shader = shader;
-	this->texture = texture;
+	_transform =t;
+
 }
 
 Kranker3D::Object::Object(const Object& obj)
 {
-	this->mesh = obj.getMesh();
-	this->shader = obj.getShader();
-	this->texture = obj.getTexture();
+	
+	_transform = obj.getTransform();
+
 }
 
-void Kranker3D::Object::Draw()
-{
-	this->shader.use();
-	this->mesh.draw();
-}
+

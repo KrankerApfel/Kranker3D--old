@@ -4,14 +4,12 @@ Kranker3D::Mesh::Mesh()
 {
 	this->vertices = vector<Vertex>();
 	this->indices = vector<unsigned int>();
-	transform = glm::mat4(1.0f);
 }
 
 Kranker3D::Mesh::Mesh(const vector<Vertex> _vertices, const vector<unsigned int> _indices) :
 	vertices{ _vertices }, indices{ _indices }
 {
 	initRenderingData();
-	transform = glm::mat4(1.0f);
 }
 
 void Kranker3D::Mesh::draw()

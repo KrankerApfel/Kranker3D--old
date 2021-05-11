@@ -72,6 +72,7 @@
 #include "resources/meshes/DragonData.h"
 
 #include "src/core/objects/camera.h"
+#include "src/core/objects/object.h"
 
 using namespace std;
 using namespace Kranker3D;
@@ -91,12 +92,7 @@ Mesh setDragoon( vector<Kranker3D::Vertex>& vertices,  vector<unsigned int>& ind
 		indices.push_back(DragonIndices[i]);
 	}
 
-	Kranker3D::Mesh dragon_mesh(vertices, indices);
-	dragon_mesh.scale(glm::vec3(0.25f, 0.25f, 0.25f));
-	dragon_mesh.translate(glm::vec3(0.0f, -4, 0.0f));
-	dragon_mesh.rotate(45,glm::vec3(0.0f, 1, 0.0f));
-
-	return dragon_mesh;
+	return Mesh(vertices, indices);
 }
 
 int main()
@@ -110,11 +106,20 @@ int main()
 	vector<unsigned int> indices;
 
 	Mesh dragon_mesh = setDragoon(vertices, indices);
-	while (w.isOpen())
+	Kranker3D::Object dragon_obj;
+	dragon_obj.getTransform().translate(glm::vec3(0.0f, -40, 0.0f));
+	dragon_obj.getTransform().rotate(45, glm::vec3(0.0f, 1, 0.0f));
+
+	dragon_obj.getTransform().scale(glm::vec3(0.25f, 0.25f, 0.25f));
+
+
+	while (w.isOpen())	
 	{
 		w.run();
 
-		s.setMat4("transform", dragon_mesh.getTransform());
+		dragon_obj.getTransform().rotate(glfwGetTime(), glm::vec3(0, 1, 0));
+
+		s.setMat4("transform", dragon_obj.getTransform().getMatrix());
 		s.setMat4("view", cam.getView());
 		s.setMat4("projection", cam.getProj());
 		s.setFloat("iTime", glfwGetTime());

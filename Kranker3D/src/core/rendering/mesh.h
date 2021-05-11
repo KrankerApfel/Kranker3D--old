@@ -30,15 +30,10 @@ namespace Kranker3D {
 		Mesh(const vector<Vertex> vertices, const vector<unsigned int> indices);
 		void draw();
 		void terminate();
-		inline void setTransform(glm::mat4 t) { transform = t; }
-		inline glm::mat4 getTransform() { return transform; }
-		inline void rotate(float degree, glm::vec3 rotate) { transform = glm::rotate(transform, glm::radians(degree), rotate); };
-		inline void scale(glm::vec3 scale) { transform = glm::scale(transform, scale); }
-		inline void translate(glm::vec3 translate) { transform = glm::translate(transform, translate); }
+	
 	private:
-		unsigned int VBO, EBO;
+		unsigned int VBO, EBO, IBO;
 		void initRenderingData();
-		glm::mat4 transform;
 
 	};
 }
