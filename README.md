@@ -39,16 +39,23 @@ I'm learning from severals ressources, here the list below.
 
 ## Core 
 - [ ] A correct config file
-- [ ] Logger 
 - [x] File reader
 
 ## Objects 
--  [ ] Camera
-
+- [ ] Camera
+- [x] Transform class
+- [x] Object class
+- [ ] Obj loader
+- [ ] Skybox
 ## Rendering  
 - [x] Shader class
 - [x] Mesh class 
 - [ ] Material class 
-- [ ] Model class
+- [ ] Texture
 - [ ] Renderer class
+- [ ] Scene classe
 - [ ] Raymarching
+
+## Lighting
+- [ ] Phong
+- [ ] Lambert
