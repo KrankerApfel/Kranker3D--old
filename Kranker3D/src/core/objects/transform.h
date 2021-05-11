@@ -12,17 +12,14 @@ namespace Kranker3D
 
 	public:
 		Transform();
-		glm::vec3 getPosition() const { return _position; };
-		glm::vec3 getScale()  const { return _scale; };
-		glm::quat getRotation()  const { return _rotation; };
+		inline glm::vec3 getPosition() const { return _position; };
+		inline glm::vec3 getScale()  const { return _scale; };
+		inline glm::quat getRotation()  const { return _rotation; };
 
-		glm::mat4 getMatrix() const
+		inline glm::mat4 getMatrix() const
 		{
-			glm::mat4 translation = glm::translate( _position);
-			glm::mat4 rotation = glm::toMat4(_rotation);
-			glm::mat4 scale = glm::scale(_scale);
-			return translation * rotation * scale;
-		};
+			return glm::scale(glm::translate(_position)* glm::toMat4(_rotation),_scale);
+ 		};
 
 		void translate(glm::vec3 translate);
 		void scale(glm::vec3 scale);

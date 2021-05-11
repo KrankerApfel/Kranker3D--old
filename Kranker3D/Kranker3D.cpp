@@ -107,19 +107,19 @@ int main()
 
 	Mesh dragon_mesh = setDragoon(vertices, indices);
 	Kranker3D::Object dragon_obj;
-	dragon_obj.getTransform().translate(glm::vec3(0.0f, -40, 0.0f));
-	dragon_obj.getTransform().rotate(45, glm::vec3(0.0f, 1, 0.0f));
 
-	dragon_obj.getTransform().scale(glm::vec3(0.25f, 0.25f, 0.25f));
+	dragon_obj.transform.translate(glm::vec3(0.0f, -1, 0.0f));
+	dragon_obj.transform.rotate(45, glm::vec3(0.0f, 1, 0.0f));
+	dragon_obj.transform.scale(glm::vec3(0.25f, 0.25f, 0.25f));
 
 
 	while (w.isOpen())	
 	{
 		w.run();
 
-		dragon_obj.getTransform().rotate(glfwGetTime(), glm::vec3(0, 1, 0));
+		dragon_obj.transform.rotate(10*glfwGetTime(), glm::vec3(0, 1, 0));
 
-		s.setMat4("transform", dragon_obj.getTransform().getMatrix());
+		s.setMat4("transform", dragon_obj.transform.getMatrix());
 		s.setMat4("view", cam.getView());
 		s.setMat4("projection", cam.getProj());
 		s.setFloat("iTime", glfwGetTime());
