@@ -7,13 +7,15 @@ namespace Kranker3D {
 
 	class Object
 	{
+		Transform _transform;
+
 
 	public:
-		Transform transform;
 
 		Object();
 		Object(Transform transform);
 		Object(const Object& obj);
+	    Transform* const getTransform() { return &_transform; }
 
 	};
 

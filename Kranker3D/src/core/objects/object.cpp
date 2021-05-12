@@ -2,19 +2,19 @@
 
 Kranker3D::Object::Object()
 {
-	transform = Transform();
+	_transform = Transform();
 }
 
 Kranker3D::Object::Object(Transform t)
 {
-	transform =t;
+	_transform =t;
 
 }
 
 Kranker3D::Object::Object(const Object& obj)
 {
 	
-	transform =  obj.transform;
+	_transform =  obj._transform;
 
 }
 
