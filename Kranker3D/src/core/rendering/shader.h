@@ -24,6 +24,7 @@ namespace Kranker3D {
 		void setColor(const char* key, GLfloat x, GLfloat y, GLfloat z) { glUniform3f(glGetUniformLocation(programId, key), x, y, z); }
 		void setFloat(const char* key, GLfloat value) { glUniform1f(glGetUniformLocation(programId, key), value); }
 		void setMat4(const char* name, glm::mat4 value) { glUniformMatrix4fv(glGetUniformLocation(programId, name), 1, GL_FALSE, &value[0][0]); }
+		void setVec3(const char* name, glm::vec3 value) { glUniform3fv(glGetUniformLocation(programId, name), 1,  &value[0]); }
 
 	};
 }

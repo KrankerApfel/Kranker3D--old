@@ -12,9 +12,6 @@ void Kranker3D::Transform::translate(glm::vec3 translate)
 {
 
 	_position += translate;
-	spdlog::warn(_position[0]);
-	spdlog::warn(_position[1]);
-	spdlog::warn(_position[2]);
 }
 
 void Kranker3D::Transform::scale(glm::vec3 scale)
