@@ -1,58 +1,48 @@
 #pragma once
-
 #include <iostream>
 #include <glad/glad.h>
 #include "../glm/glm.hpp"
 #include "../glm/gtc/matrix_transform.hpp"
 #include "../glm/gtc/type_ptr.hpp"
 #include "../glm/gtx/string_cast.hpp"
+#include "../../core/objects/transform.h"
 
 namespace Kranker3D
 {
+
+	enum class ProjectionType {PERSPECTIVE = 0 , ORTHOGONAL = 1};
+
 	class Camera {
+	
 	private:
-		glm::mat4 projection;
-		glm::mat4 view;
 
-		glm::vec3 position;
-		glm::vec3 front;
-		glm::vec3 up;
+		// matrix
+		glm::mat4 _projection;
+		glm::mat4 _view;
+		
+		Transform _transform;
 
-		float yaw;
-		float pitch;
-		float sensibility;
 
-		float speed;
-		float deltaSpeed;
-
-		void updateFront();
-		void updateCamMouse(float yaw_offset, float pitch_offset);
 
 	public:
+		// lens settings
+		float Near, Far, FoV;
+		ProjectionType projectionType;
+
 		Camera(int width, int height);
 
 		//getter
-		inline glm::mat4 getView() { return view; }
-		inline glm::mat4 getProj() { return projection; }
-		inline glm::vec3 getUp() { return up; }
-		inline glm::vec3 getFront() { return front; }
-		inline glm::vec3 getPos() { return position; }
-		inline float getSpeed() { return speed; }
-		inline float getDeltaSpeed() { return deltaSpeed; }
-		inline float getYaw() { return yaw; }
+		inline glm::mat4 getView() const { return _view; }
+		inline glm::mat4 getProj() const { return _projection; }
+		inline Transform* getTransform() { return &_transform; }
 
-		//miam miam c'est bon les pitchs
-		inline float getPitch() { return pitch; }
 
 		//setter
-		inline void setView(glm::mat4 newView) { view = newView; }
-		inline void setSpeed(float spd) { speed = spd; }
-		inline void setDeltaSpeed(float dspd) { deltaSpeed = dspd; }
-		inline void setYaw(float yw) { yaw = yw; }
-		void setPitch(float pitch);
-		inline void setFront(glm::vec3 frnt) { front = frnt; }
+		inline void setView(glm::mat4 newView) { _view = newView; }
+		
 
-		//function
-		void update(float mouseXoffset, float mouseYoffset);
+	
+
+
 	};
 }
