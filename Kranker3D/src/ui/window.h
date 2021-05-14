@@ -12,6 +12,7 @@ namespace Kranker3D {
 		inline bool getKeyPress(int keycode) { return glfwGetKey(_window, keycode) == GLFW_PRESS; }
 		inline bool getKeyRelease(int keycode) { return glfwGetKey(_window, keycode) == GLFW_RELEASE; }
 		inline bool getKeyDown(int keycode) { return glfwGetKey(_window, keycode) == GLFW_REPEAT; }
+		inline void setBackgroundColor(float r, float g, float b) { glClearColor(r, g, b, 1.0f); }
 	//	float getElapsedTimeSeconde();
 	//	void setBackgroundColor(GLfloat color[4]);
 

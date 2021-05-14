@@ -1,6 +1,6 @@
 ﻿/*####################################################################################################################
-#     Copyright(C) 2020 by Tom "Kranker Apfel" RKT																	 #
-#     https://portfolio.krankerapfel.fr																				 #
+#     Copyright(C) 2020 by T "Kranker Apfel" RKT																	 #
+#     https://krankerapfel.github.io																				 #
 #																													 #
 #     The program is distributed under the terms of the GNU General Public License	    							 #
 #																													 #
@@ -113,7 +113,7 @@ int main()
 	dragon_obj.getTransform()->scale(glm::vec3(0.25f, 0.25f, 0.25f));
 
 	const float sp = .005f;
-
+	w.setBackgroundColor(0.99, 0.90, 0.94);
 	while (w.isOpen())
 	{
 		w.run();
