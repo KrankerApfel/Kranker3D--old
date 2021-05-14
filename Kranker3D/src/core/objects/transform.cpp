@@ -10,10 +10,10 @@ Kranker3D::Transform::Transform()
 
 glm::vec3 Kranker3D::Transform::getForward() const
 {
-	float x = _rotation[0];
-	float y = _rotation[1];
-	float z = _rotation[2];
-	float w = _rotation[4];
+	float x = _rotation.x;
+	float y = _rotation.y;
+	float z = _rotation.z;
+	float w = _rotation.w;
 
 	return glm::normalize(glm::vec3(2 * (x * z + w * y),
 								    2 * (y * z - w * x),

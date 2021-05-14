@@ -26,7 +26,7 @@
 #                                    / ,< / __/ _ `/ _ \/  '_/ -_) __/ _/_ </ // /                                   #
 #                                   /_/|_/_/  \_,_/_//_/_/\_\\__/_/   /____/____/                                    #
 #                                                                                                                    #
-#							a raymarching / signed distance function based graphic engine               		 	 #
+#												basic graphic engine                                    		 	 #
 #																					   							 	 #
 #																					   							 	 #
 #																					   							 	 #
@@ -112,12 +112,19 @@ int main()
 	dragon_obj.getTransform()->rotate(45, glm::vec3(0.0f, 1, 0.0f));
 	dragon_obj.getTransform()->scale(glm::vec3(0.25f, 0.25f, 0.25f));
 
+	const float sp = .005f;
+
 	while (w.isOpen())
 	{
 		w.run();
 
+		if (w.getKeyPress(GLFW_KEY_W)) cam.getTransform()->translate(sp * cam.getTransform()->getForward());
+		if (w.getKeyPress(GLFW_KEY_S)) cam.getTransform()->translate(-sp * cam.getTransform()->getForward());
+		if (w.getKeyPress(GLFW_KEY_D)) cam.getTransform()->translate(-sp * cam.getTransform()->getRight());
+		if (w.getKeyPress(GLFW_KEY_A)) cam.getTransform()->translate(sp * cam.getTransform()->getRight());
+
 		dragon_obj.getTransform()->rotate(10 * glfwGetTime(), glm::vec3(0, 1, 0));
- 		s.setMat4("transform", dragon_obj.getTransform()->getMatrix());
+		s.setMat4("transform", dragon_obj.getTransform()->getMatrix());
 		s.setMat4("view", cam.getView());
 		s.setMat4("projection", cam.getProj());
 		s.setFloat("iTime", glfwGetTime());

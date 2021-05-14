@@ -9,9 +9,11 @@ namespace Kranker3D {
 		void run();
 		bool isOpen();
 		void terminate();
+		inline bool getKeyPress(int keycode) { return glfwGetKey(_window, keycode) == GLFW_PRESS; }
+		inline bool getKeyRelease(int keycode) { return glfwGetKey(_window, keycode) == GLFW_RELEASE; }
+		inline bool getKeyDown(int keycode) { return glfwGetKey(_window, keycode) == GLFW_REPEAT; }
 	//	float getElapsedTimeSeconde();
 	//	void setBackgroundColor(GLfloat color[4]);
-	//	sf::Event getInputEvent() { return _inputEvent; }
 
 		//void setVSync();
 		//void setFullscreen();
@@ -20,7 +22,6 @@ namespace Kranker3D {
 		bool _fullscreen;
 		bool _vsync;
 		//Clock _clock;
-		//Event _inputEvent;
 
 		void initContext();
 		void initGlad();

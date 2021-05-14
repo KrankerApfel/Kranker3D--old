@@ -161,6 +161,7 @@
     <ClCompile Include="vendor\GLAD\src\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Input.h" />
     <ClInclude Include="src\core\io\file.h" />
     <ClInclude Include="src\core\objects\camera.h" />
     <ClInclude Include="src\core\objects\object.h" />
