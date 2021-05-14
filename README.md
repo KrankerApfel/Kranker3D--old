@@ -1,5 +1,7 @@
 # Kranker3D - Simple rendering engine 
 
+![cover](Screens/cover.png)
+
 I am building this 3D rendering engine to learn openGL and make demoscene.
 I started with absolutely no knowledge about GPU programming, so it's quite possible that there's a lot of flaws in this project. 
 I'm open to any kind of criticism that could help me improve ! 
@@ -42,7 +44,7 @@ I'm learning from severals ressources, here the list below.
 - [x] File reader
 
 ## Objects 
-- [ ] Camera
+- [x] Camera
 - [x] Transform class
 - [x] Object class
 - [ ] Obj loader
