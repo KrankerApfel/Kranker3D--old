@@ -7,42 +7,46 @@
 #include "../glm/gtx/string_cast.hpp"
 #include "../../core/objects/transform.h"
 
+// TODO : 
+// --------- LookAt
+// --------- screenToWorldPoint
+// --------- screenToViewportPoint
+// --------- screenPointToRay
+// --------- viewportToWorldPoint
+// --------- viewportToScreenPoint
+// --------- viewportPointToRay
+// --------- worldToScreenPoint
+// --------- worldToViewportPoint
+
+
 namespace Kranker3D
 {
 
-	enum class ProjectionType {PERSPECTIVE = 0 , ORTHOGONAL = 1};
+	enum class ProjectionType { PERSPECTIVE = 0, ORTHOGONAL = 1 };
 
 	class Camera {
-	
+
 	private:
 
-		// matrix
-		glm::mat4 _projection;
-		glm::mat4 _view;
-		
 		Transform _transform;
-
-
+		float _width, _height;
 
 	public:
 		// lens settings
 		float Near, Far, FoV;
 		ProjectionType projectionType;
 
-		Camera(int width, int height);
+		Camera(float width, float height, ProjectionType projectionType = ProjectionType::PERSPECTIVE);
 
 		//getter
-		inline glm::mat4 getView() const { return _view; }
-		inline glm::mat4 getProj() const { return _projection; }
+		inline glm::mat4 getView() const { return _transform.getMatrix(); }
+		inline glm::mat4 getProj() const {
+			return  projectionType == Kranker3D::ProjectionType::PERSPECTIVE ?
+				glm::perspective(glm::radians(FoV), _width / _height, Near, Far) :
+				glm::ortho(glm::radians(FoV), _width / _height, Near, Far);
+		}
 		inline Transform* getTransform() { return &_transform; }
-
-
-		//setter
-		inline void setView(glm::mat4 newView) { _view = newView; }
-		
-
-	
-
+		inline float getAspectRation() { return _width/_height; }
 
 	};
 }
