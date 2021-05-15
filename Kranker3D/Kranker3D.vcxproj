@@ -120,7 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)vendor\GLAD\include;$(ProjectDir)vendor\glfw\include;$(ProjectDir)vendor\spdlog\include;D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendor\GLAD\include;$(ProjectDir)vendor\glfw\include;$(ProjectDir)vendor\spdlog\include;D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\glm\glm;D:\Dev\GPUdev\Kranker3D\Kranker3D\vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,6 +156,7 @@
     <ClCompile Include="src\core\objects\transform.cpp" />
     <ClCompile Include="src\core\rendering\mesh.cpp" />
     <ClCompile Include="src\core\rendering\shader.cpp" />
+    <ClCompile Include="src\core\rendering\texture.cpp" />
     <ClCompile Include="src\ui\window.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="vendor\GLAD\src\glad.c" />
@@ -168,6 +169,7 @@
     <ClInclude Include="src\core\objects\transform.h" />
     <ClInclude Include="src\core\rendering\mesh.h" />
     <ClInclude Include="src\core\rendering\shader.h" />
+    <ClInclude Include="src\core\rendering\texture.h" />
     <ClInclude Include="src\ui\window.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

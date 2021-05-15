@@ -69,13 +69,17 @@
 #include "src/ui/window.h"
 #include "src/core/rendering/shader.h"
 #include "src/core/rendering/mesh.h"
+#include "src/core/rendering/texture.h"
 #include "resources/meshes/DragonData.h"
 
 #include "src/core/objects/camera.h"
 #include "src/core/objects/object.h"
 
+#include "stb_image.h"
+#include "stb_image_write.h"
 using namespace std;
 using namespace Kranker3D;
+
 
 Mesh setDragoon(vector<Kranker3D::Vertex>& vertices, vector<unsigned int>& indices)
 {
@@ -137,9 +141,12 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 int main()
 {
+	
 	// 1. initialization
-	Window w(800, 800, "Gegege no Kitaro");
+	Window w(800, 800, "Gegege no Kitaro");	
+
 	Shader s("resources\\shaders\\test_vertex.glsl", "resources\\shaders\\test_fragment.glsl");
+	Texture t("resources\\textures\\test.jpg");
 
 	vector<Kranker3D::Vertex> vertices;
 	vector<unsigned int> indices;
@@ -156,6 +163,9 @@ int main()
 	w.setCursorPosCallback(mouse_callback);
 	w.setMouseScrollCallback(scroll_callback);
 
+	
+
+
 	while (w.isOpen())
 	{
 		w.run();
@@ -166,6 +176,7 @@ int main()
 		s.setMat4("projection", cam.getProj());
 		s.setFloat("iTime", glfwGetTime());
 		s.use();
+		t.use();
 		dragon_mesh.draw();
 	}
 	// 3. terminate
