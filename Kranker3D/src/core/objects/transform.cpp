@@ -34,7 +34,12 @@ void Kranker3D::Transform::scale(glm::vec3 scale)
 void Kranker3D::Transform::rotate(float degree, glm::vec3 rotate)
 {
 	_rotation = glm::quat(glm::radians(degree) * rotate);
-};
+}
+void  Kranker3D::Transform::lerp(glm::vec3 origin, glm::vec3 goal, float step)
+{
+	_position = ( origin * (1.f - step) + goal * step);
+}
+
 
 
 

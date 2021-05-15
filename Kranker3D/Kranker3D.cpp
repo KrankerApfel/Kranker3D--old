@@ -2,7 +2,7 @@
 #     Copyright(C) 2020 by T "Kranker Apfel" RKT																	 #
 #     https://krankerapfel.github.io																				 #
 #																													 #
-#     The program is distributed under the terms of the GNU General Public License	    							 #
+#     This program is distributed under the terms of the GNU General Public License	    							 #
 #																													 #
 #      ██ ▄█▀ ██▀███   ▄▄▄       ███▄    █  ██ ▄█▀▓█████  ██▀███      ▄▄▄       ██▓███    █████▒▓█████  ██▓          #
 #      ██▄█▒ ▓██ ▒ ██▒▒████▄     ██ ▀█   █  ██▄█▒ ▓█   ▀ ▓██ ▒ ██▒   ▒████▄    ▓██░  ██▒▓██   ▒ ▓█   ▀ ▓██▒          #
@@ -95,11 +95,50 @@ Mesh setDragoon(vector<Kranker3D::Vertex>& vertices, vector<unsigned int>& indic
 	return Mesh(vertices, indices);
 }
 
+//TODO : Input class
+
+double old_mouse_x = 0.0f;
+double old_mouse_y = 0.0f;
+bool first_press = true;
+Camera cam(800, 800);
+float yaw = 0;
+float pitch = 0;
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	int action = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_MIDDLE);
+	if (action == GLFW_PRESS)
+	{
+		if (first_press)
+		{
+			old_mouse_x = xpos;
+			old_mouse_y = ypos;
+			first_press = false;
+		}	
+
+		cam.getTransform()->translate(0.00005f * glm::vec3 (xpos - old_mouse_x, old_mouse_y - ypos, 0));
+	}
+	else if (action == GLFW_RELEASE)
+	{
+		first_press = true;
+	}
+
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	cam.FoV -= (float)yoffset;
+	if (cam.FoV < 1.0f)
+		cam.FoV = 1.0f;
+	if (cam.FoV > 135.0f)
+		cam.FoV = 135.0f;
+}
+
+
+
 int main()
 {
 	// 1. initialization
 	Window w(800, 800, "Gegege no Kitaro");
-	Camera cam(800, 800);
 	Shader s("resources\\shaders\\test_vertex.glsl", "resources\\shaders\\test_fragment.glsl");
 
 	vector<Kranker3D::Vertex> vertices;
@@ -114,14 +153,12 @@ int main()
 
 	const float sp = .005f;
 	w.setBackgroundColor(0.99, 0.90, 0.94);
+	w.setCursorPosCallback(mouse_callback);
+	w.setMouseScrollCallback(scroll_callback);
+
 	while (w.isOpen())
 	{
 		w.run();
-
-		if (w.getKeyPress(GLFW_KEY_W)) cam.getTransform()->translate(sp * cam.getTransform()->getForward());
-		if (w.getKeyPress(GLFW_KEY_S)) cam.getTransform()->translate(-sp * cam.getTransform()->getForward());
-		if (w.getKeyPress(GLFW_KEY_D)) cam.getTransform()->translate(-sp * cam.getTransform()->getRight());
-		if (w.getKeyPress(GLFW_KEY_A)) cam.getTransform()->translate(sp * cam.getTransform()->getRight());
 
 		dragon_obj.getTransform()->rotate(10 * glfwGetTime(), glm::vec3(0, 1, 0));
 		s.setMat4("transform", dragon_obj.getTransform()->getMatrix());

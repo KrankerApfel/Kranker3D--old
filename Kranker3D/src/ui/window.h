@@ -9,9 +9,8 @@ namespace Kranker3D {
 		void run();
 		bool isOpen();
 		void terminate();
-		inline bool getKeyPress(int keycode) { return glfwGetKey(_window, keycode) == GLFW_PRESS; }
-		inline bool getKeyRelease(int keycode) { return glfwGetKey(_window, keycode) == GLFW_RELEASE; }
-		inline bool getKeyDown(int keycode) { return glfwGetKey(_window, keycode) == GLFW_REPEAT; }
+		inline void setCursorPosCallback(GLFWcursorposfun  cursor_position_callback) { glfwSetCursorPosCallback(_window, cursor_position_callback); }
+		inline void setMouseScrollCallback(GLFWscrollfun  scroll_callback) { glfwSetScrollCallback(_window, scroll_callback); }
 		inline void setBackgroundColor(float r, float g, float b) { glClearColor(r, g, b, 1.0f); }
 	//	float getElapsedTimeSeconde();
 	//	void setBackgroundColor(GLfloat color[4]);

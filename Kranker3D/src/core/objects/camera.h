@@ -46,7 +46,7 @@ namespace Kranker3D
 				glm::ortho(glm::radians(FoV), _width / _height, Near, Far);
 		}
 		inline Transform* getTransform() { return &_transform; }
-		inline float getAspectRation() { return _width/_height; }
+		inline float getAspectRatio() { return _width/_height; }
 
 	};
 }
