@@ -42,6 +42,7 @@ I'm learning from severals ressources, here the list below.
 ## Core 
 - [ ] A correct config file
 - [x] File reader
+- [ ] Input class
 
 ## Objects 
 - [x] Camera
@@ -49,6 +50,8 @@ I'm learning from severals ressources, here the list below.
 - [x] Object class
 - [ ] Obj loader
 - [ ] Skybox
+- [ ] Light
+
 ## Rendering  
 - [x] Shader class
 - [x] Mesh class 
@@ -58,6 +61,6 @@ I'm learning from severals ressources, here the list below.
 - [ ] Scene classe
 - [ ] Raymarching
 
-## Lighting
+## Material
 - [ ] Phong
 - [ ] Lambert
