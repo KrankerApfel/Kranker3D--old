@@ -1,6 +1,6 @@
 #pragma once
 #include "../../stdafx.h"
-#include "../../glm/glm/mat4x4.hpp"
+#include <glm/mat4x4.hpp>
 
 namespace Kranker3D {
 

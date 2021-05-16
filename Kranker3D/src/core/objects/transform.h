@@ -1,7 +1,7 @@
 #pragma once
 #include "../../stdafx.h"
-#include "../../glm/glm/gtx/transform.hpp"
-#include "../../glm/glm/gtx/quaternion.hpp"
+#include <glm/gtx/transform.hpp>
+#include <glm/gtx/quaternion.hpp>
 namespace Kranker3D
 {
 	class Transform {

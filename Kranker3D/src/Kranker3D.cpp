@@ -145,8 +145,8 @@ int main()
 	// 1. initialization
 	Window w(800, 800, "Gegege no Kitaro");	
 
-	Shader s("resources\\shaders\\test_vertex.glsl", "resources\\shaders\\test_fragment.glsl");
-	Texture t("resources\\textures\\test.jpg");
+	Shader s("D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\shaders\\test_vertex.glsl", "D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\shaders\\test_fragment.glsl");
+	Texture t("D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\textures\\test.jpg");
 
 	vector<Kranker3D::Vertex> vertices;
 	vector<unsigned int> indices;
