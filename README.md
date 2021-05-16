@@ -8,7 +8,7 @@ I'm open to any kind of criticism that could help me improve !
 
 If anyone's interested in mentoring me on this project, here's my twitter account : [@KrankerApfel](https://twitter.com/krankerapfel	)
 
-This project is a Visual Studio solution and it used OpenGL, GLAD, glm and GLFW.
+This project use OpenGL, GLAD, glm, GLFW, ImGUI and stb. You can use CMake to compile it.
 
 ## Helping ressources 
 
