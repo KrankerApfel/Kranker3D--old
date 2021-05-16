@@ -66,14 +66,14 @@
 ####################################################################################################################*/
 
 #include "stdafx.h"
-#include "src/ui/window.h"
-#include "src/core/rendering/shader.h"
-#include "src/core/rendering/mesh.h"
-#include "src/core/rendering/texture.h"
-#include "resources/meshes/DragonData.h"
+#include "ui/window.h"
+#include "core/rendering/shader.h"
+#include "core/rendering/mesh.h"
+#include "core/rendering/texture.h"
+#include "../resources/meshes/DragonData.h"
 
-#include "src/core/objects/camera.h"
-#include "src/core/objects/object.h"
+#include "core/objects/camera.h"
+#include "core/objects/object.h"
 
 #include "stb_image.h"
 #include "stb_image_write.h"

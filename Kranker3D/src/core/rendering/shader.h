@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../stdafx.h"
+#include "../../stdafx.h"
 #include "../../glm/glm/mat4x4.hpp"
 
 namespace Kranker3D {
