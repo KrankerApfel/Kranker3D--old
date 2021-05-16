@@ -66,14 +66,14 @@
 ####################################################################################################################*/
 
 #include "stdafx.h"
-#include "src/ui/window.h"
-#include "src/core/rendering/shader.h"
-#include "src/core/rendering/mesh.h"
-#include "src/core/rendering/texture.h"
-#include "resources/meshes/DragonData.h"
+#include "ui/window.h"
+#include "core/rendering/shader.h"
+#include "core/rendering/mesh.h"
+#include "core/rendering/texture.h"
+#include "../resources/meshes/DragonData.h"
 
-#include "src/core/objects/camera.h"
-#include "src/core/objects/object.h"
+#include "core/objects/camera.h"
+#include "core/objects/object.h"
 
 #include "stb_image.h"
 #include "stb_image_write.h"
@@ -145,8 +145,8 @@ int main()
 	// 1. initialization
 	Window w(800, 800, "Gegege no Kitaro");	
 
-	Shader s("resources\\shaders\\test_vertex.glsl", "resources\\shaders\\test_fragment.glsl");
-	Texture t("resources\\textures\\test.jpg");
+	Shader s("D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\shaders\\test_vertex.glsl", "D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\shaders\\test_fragment.glsl");
+	Texture t("D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\textures\\test.jpg");
 
 	vector<Kranker3D::Vertex> vertices;
 	vector<unsigned int> indices;

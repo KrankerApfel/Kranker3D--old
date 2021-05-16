@@ -149,7 +149,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Kranker3D.cpp" />
     <ClCompile Include="src\core\io\file.cpp" />
     <ClCompile Include="src\core\objects\camera.cpp" />
     <ClCompile Include="src\core\objects\object.cpp" />
@@ -157,8 +156,9 @@
     <ClCompile Include="src\core\rendering\mesh.cpp" />
     <ClCompile Include="src\core\rendering\shader.cpp" />
     <ClCompile Include="src\core\rendering\texture.cpp" />
+    <ClCompile Include="src\Kranker3D.cpp" />
+    <ClCompile Include="src\stdafx.cpp" />
     <ClCompile Include="src\ui\window.cpp" />
-    <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="vendor\GLAD\src\glad.c" />
   </ItemGroup>
   <ItemGroup>
@@ -170,8 +170,8 @@
     <ClInclude Include="src\core\rendering\mesh.h" />
     <ClInclude Include="src\core\rendering\shader.h" />
     <ClInclude Include="src\core\rendering\texture.h" />
+    <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\ui\window.h" />
-    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

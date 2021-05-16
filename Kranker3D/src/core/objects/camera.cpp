@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "../../../stdafx.h"
+#include "../../stdafx.h"
 #define DETLA_TIME 0.0016
 
 

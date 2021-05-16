@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../../glm/glm/glm.hpp"
-#include "../../glm/glm/gtc/matrix_transform.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include <string>
 #include <vector>
-#include "../../../stdafx.h"
+#include "../../stdafx.h"
 #include "shader.h"
 using namespace std;
 
