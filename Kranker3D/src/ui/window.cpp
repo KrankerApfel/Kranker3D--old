@@ -3,21 +3,21 @@
 
 
 Kranker3D::Window::Window(int _width, int _height, std::string& _title, GLFWmonitor* _monitor, GLFWwindow* _share): 
-	width(_width), height(_height), title(_title), monitor(_monitor), share(_share)
+	width(_width), height(_height), title(_title), monitor(_monitor), share(_share), window(NULL)
 {
-	OpenGL_Context::getInstance(*this);
+	OpenGL_Context::getInstance(this);
 
 }
 
 void Kranker3D::Window::run()
 {
 
-	OpenGL_Context::getInstance(*this)->render();
+	OpenGL_Context::getInstance(this)->render();
 }
 
 bool Kranker3D::Window::isOpen()
 {
-	return OpenGL_Context::getInstance(*this)->isOpen();
+	return OpenGL_Context::getInstance(this)->isOpen();
 }		
 
 
