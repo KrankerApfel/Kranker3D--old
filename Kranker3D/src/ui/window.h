@@ -17,8 +17,9 @@ namespace Kranker3D {
 
 		//void setVSync();
 		//void setFullscreen();
-	private:
 		GLFWwindow* _window;
+
+	private:
 		bool _fullscreen;
 		bool _vsync;
 		//Clock _clock;
