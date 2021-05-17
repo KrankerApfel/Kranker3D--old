@@ -149,7 +149,8 @@ int main()
 {
 	
 	// 1. initialization
-	Window w(800, 800, "Gegege no Kitaro");	
+	std::string sdfg = "xcvbn";
+	Window w(800, 800, sdfg);	
 
 	Shader s("D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\shaders\\test_vertex.glsl", "D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\shaders\\test_fragment.glsl");
 	Texture t("D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\textures\\test.jpg");
@@ -179,9 +180,9 @@ int main()
 	// Setup Dear ImGui style
 	ImGui::StyleColorsDark();
 	
-	// Setup Platform/Renderer backends
+	// Setup Platform/Renderer backendsgt
 	const char* glsl_version = "#version 130";
-	ImGui_ImplGlfw_InitForOpenGL(w._window, true);
+	ImGui_ImplGlfw_InitForOpenGL(w.window, true);
 	ImGui_ImplOpenGL3_Init(glsl_version);
 
 

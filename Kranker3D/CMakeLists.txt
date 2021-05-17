@@ -8,9 +8,7 @@ project(Kranker3D)
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} 
-
-)
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} )
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog")

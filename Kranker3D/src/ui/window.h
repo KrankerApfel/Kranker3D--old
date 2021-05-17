@@ -5,19 +5,23 @@ namespace Kranker3D {
 
 	class Window {
 	public:
-		Window(int width, int height, const std::string& title = "Title", GLFWmonitor* monitor = NULL, GLFWwindow* share = NULL);
+		Window(int width, int height, std::string& title, GLFWmonitor* monitor = NULL, GLFWwindow* share = NULL);
 		void run();
 		bool isOpen();
 		void terminate();
-		inline void setCursorPosCallback(GLFWcursorposfun  cursor_position_callback) { glfwSetCursorPosCallback(_window, cursor_position_callback); }
-		inline void setMouseScrollCallback(GLFWscrollfun  scroll_callback) { glfwSetScrollCallback(_window, scroll_callback); }
+		inline void setCursorPosCallback(GLFWcursorposfun  cursor_position_callback) { glfwSetCursorPosCallback(window, cursor_position_callback); }
+		inline void setMouseScrollCallback(GLFWscrollfun  scroll_callback) { glfwSetScrollCallback(window, scroll_callback); }
 		inline void setBackgroundColor(float r, float g, float b) { glClearColor(r, g, b, 1.0f); }
+		GLFWwindow* window;
+		int width, height;
+		std::string& title;
+		GLFWmonitor* monitor;
+		GLFWwindow* share;
 	//	float getElapsedTimeSeconde();
 	//	void setBackgroundColor(GLfloat color[4]);
 
 		//void setVSync();
 		//void setFullscreen();
-		GLFWwindow* _window;
 
 	private:
 		bool _fullscreen;
