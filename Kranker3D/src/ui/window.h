@@ -17,19 +17,14 @@ namespace Kranker3D {
 		std::string& title;
 		GLFWmonitor* monitor;
 		GLFWwindow* share;
-	//	float getElapsedTimeSeconde();
-	//	void setBackgroundColor(GLfloat color[4]);
+	
 
-		//void setVSync();
-		//void setFullscreen();
-
-	private:
+	/*private:
 		bool _fullscreen;
 		bool _vsync;
-		//Clock _clock;
 
 		void initContext();
-		void initGlad();
+		void initGlad();*/
 
 	};
 }

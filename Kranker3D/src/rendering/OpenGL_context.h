@@ -18,8 +18,10 @@ namespace Kranker3D
 		~OpenGL_Context() {};
 		OpenGL_Context(OpenGL_Context& other) = delete; // not cloneable
 		void operator=(const OpenGL_Context&) = delete; // not assigneable
-		static OpenGL_Context* getInstance(const Window& window);
+
+
 		bool isOpen();
+
 		void init() override;
 		void preRender() override;
 		void render() override;

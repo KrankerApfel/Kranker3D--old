@@ -7,15 +7,16 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-Kranker3D::OpenGL_Context* Kranker3D::OpenGL_Context::getInstance(const Window& window)
+static OpenGL_Context* getInstance(Window* const window)
 {
-    std::lock_guard<std::mutex> lock(_mutex);
-    if (_instance == nullptr)
-    {
-        _instance = new OpenGL_Context(window);
-    }
-    return _instance;
-}
+	std::lock_guard<std::mutex> lock(_mutex);
+	if (_instance == nullptr)
+	{
+		_instance = new OpenGL_Context(window);
+	}
+	return _instance;
+};
+
 
 bool Kranker3D::OpenGL_Context::isOpen()
 {
