@@ -12,7 +12,7 @@ namespace Kranker3D
 	private:
 		static OpenGL_Context* instance;
 		Window* _window;
-	//	static std::mutex _mutex;
+		static std::mutex _mutex;
 
 	public:
 		OpenGL_Context(Window* window) { _window = window;};

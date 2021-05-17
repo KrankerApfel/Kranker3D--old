@@ -6,7 +6,7 @@ namespace Kranker3D {
 	class Window {
 	public:
 		Window(int width, int height, std::string& title, GLFWmonitor* monitor = NULL, GLFWwindow* share = NULL);
-		void run();
+		void run(/*void (*render_callback)()*/);
 		bool isOpen();
 		void terminate();
 		inline void setCursorPosCallback(GLFWcursorposfun  cursor_position_callback) { glfwSetCursorPosCallback(window, cursor_position_callback); }
