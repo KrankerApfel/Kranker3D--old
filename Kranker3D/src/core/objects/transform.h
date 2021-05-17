@@ -15,6 +15,10 @@ namespace Kranker3D
 		inline glm::vec3 getPosition() const { return _position; };
 		inline glm::vec3 getScale()  const { return _scale; };
 		inline glm::quat getRotation()  const { return _rotation; };
+
+		inline  void setPosition(glm::vec3 position) { _position = position; };
+		inline void   setScale(glm::vec3 scale) { _scale = scale; };
+
 		glm::vec3 getForward() const;
 		inline glm::vec3 getRight() const { return glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), getForward()); }
 		inline glm::vec3 getUp() const { return glm::cross(getForward(), getRight()); };
@@ -27,7 +31,7 @@ namespace Kranker3D
 		void translate(glm::vec3 translate);
 		void scale(glm::vec3 scale);
 		void rotate(float degree, glm::vec3 rotate);
-		inline void lookAt(glm::vec3 direction) { _rotation = glm::quat(glm::lookAt(_position,direction, getUp())); };
+		inline void lookAt(glm::vec3 direction) { _rotation = glm::quat(glm::lookAt(_position, direction, getUp())); };
 		void lerp(glm::vec3 origine, glm::vec3 goal, float step);
 
 	};
