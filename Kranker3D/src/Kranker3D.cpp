@@ -77,6 +77,12 @@
 
 #include "stb_image.h"
 #include "stb_image_write.h"
+
+
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 using namespace std;
 using namespace Kranker3D;
 
