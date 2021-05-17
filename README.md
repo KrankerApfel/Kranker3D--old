@@ -40,9 +40,10 @@ I'm learning from severals ressources, here the list below.
 # Roadmap V 1.0
 
 ## Core 
-- [ ] A correct config file
+- [ ] Config file
 - [x] File reader
 - [ ] Input class
+- [ ] Resources manager
 
 ## Objects 
 - [x] Camera
@@ -59,8 +60,10 @@ I'm learning from severals ressources, here the list below.
 - [ ] Texture
 - [ ] Renderer class
 - [ ] Scene classe
+- [ ] Raytracing
+- [ ] SDF
 - [ ] Raymarching
 
-## Material
+## Materials
 - [ ] Phong
 - [ ] Lambert
