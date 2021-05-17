@@ -6,6 +6,7 @@ Kranker3D::Window::Window(int _width, int _height, std::string& _title, GLFWmoni
 	width(_width), height(_height), title(_title), monitor(_monitor), share(_share), window(NULL)
 {
 	OpenGL_Context::getInstance(this);
+	OpenGL_Context::getInstance(this)->init();
 
 }
 
