@@ -4,7 +4,6 @@ project(Kranker3D)
 #find_package(imgui CONFIG)
 
 
-target_compile_definitions(Kranker3D   PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD    )
 
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
@@ -25,10 +24,10 @@ set(DEPENDENCIES_HEADERS
        
 )
 
-target_include_directories(Kranker3D PRIVATE  ${DEPENDENCIES_HEADERS} )
+target_include_directories(Kranker3D PUBLIC  ${DEPENDENCIES_HEADERS} )
 
 
-target_link_libraries(Kranker3D PRIVATE
+target_link_libraries(Kranker3D PUBLIC
 		glfw
 		glm::glm
 		spdlog 
