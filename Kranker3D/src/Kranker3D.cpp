@@ -161,7 +161,7 @@ int main()
 	dragon_obj.getTransform()->translate(glm::vec3(0.0f, -1, 0.0f));
 
 	dragon_obj.getTransform()->rotate(45, glm::vec3(0.0f, 1, 0.0f));
-	dragon_obj.getTransform()->scale(glm::vec3(0.25f, 0.25f, 0.25f));
+	dragon_obj.getTransform()->rescale(0.25f);
 
 	const float sp = .005f;
 	w.setBackgroundColor(0.99, 0.90, 0.94);
@@ -182,15 +182,15 @@ int main()
 	//const char* glsl_version = "#version 130";
 	//ImGui_ImplGlfw_InitForOpenGL(w.window, true);
 	//ImGui_ImplOpenGL3_Init(glsl_version);
-	Panel* p = new PropertyPanel();
-
+	PropertyPanel* p = new PropertyPanel();
+	p->linkObject(&dragon_obj);
 	w.linkPanel(p);
 
 	////-------------
-	static float pos[3] = { dragon_obj.getTransform()->getPosition().x, dragon_obj.getTransform()->getPosition().x,dragon_obj.getTransform()->getPosition().x };
-	static float scale[3] = { dragon_obj.getTransform()->getScale().x, dragon_obj.getTransform()->getScale().x,dragon_obj.getTransform()->getScale().x };
+	/*static float pos[3] = { dragon_obj.getTransform()->getPosition().x, dragon_obj.getTransform()->getPosition().x,dragon_obj.getTransform()->getPosition().x };
+	static float scale[3] = { dragon_obj.getTransform()->getScale().x, dragon_obj.getTransform()->getScale().x,dragon_obj.getTransform()->getScale().x };*/
 
-
+	
 	while (w.isOpen())
 	{
 		//// Start the Dear ImGui frame
@@ -221,9 +221,9 @@ int main()
 
 		w.run();
 
-		dragon_obj.getTransform()->rotate(10 * glfwGetTime(), glm::vec3(0, 1, 0));
-		dragon_obj.getTransform()->setPosition(glm::vec3(pos[0], pos[1], pos[2]));
-		dragon_obj.getTransform()->setScale(glm::vec3(scale[0], scale[1], scale[2]));
+		//dragon_obj.getTransform()->rotate(10 * glfwGetTime(), glm::vec3(0, 1, 0));
+		//dragon_obj.getTransform()->setPosition(glm::vec3(pos[0], pos[1], pos[2]));
+		//dragon_obj.getTransform()->setScale(glm::vec3(scale[0], scale[1], scale[2]));
 		s.setMat4("transform", dragon_obj.getTransform()->getMatrix());
 		s.setMat4("view", cam.getView());
 		s.setMat4("projection", cam.getProj());

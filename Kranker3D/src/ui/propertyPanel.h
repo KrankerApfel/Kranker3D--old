@@ -1,27 +1,49 @@
 #pragma once
+#include <glm/gtx/transform.hpp>
 #include "panel.h"
-
+#include "../core/objects/object.h"
 namespace Kranker3D {
 	class PropertyPanel : public Panel
 	{
+	private:
+		Object* _obj;
+
 	public:
 
-		PropertyPanel() { title = "Property"; };
+		PropertyPanel() { title = "Property"; _obj = nullptr; };
 
+		void linkObject(Object* const obj) { _obj = obj; }
 		void render() override {
+
 
 			ImGui::Begin(title);
 
 			if (ImGui::CollapsingHeader("Transform"))
 			{
-				float pos[3] = { 10,15,20 };
-				ImGui::PushItemWidth(150.f);
 
-				ImGui::InputFloat3("Position", pos); // TODO : link to object transform
 
-				ImGui::InputFloat3("Rotation", pos); // TODO : link to object transform
+				ImGui::PushItemWidth(50.0f);
 
-				ImGui::InputFloat3("Scale", pos); // TODO : link to object transform
+				ImGui::Text("Position");
+
+				
+				ImGui::DragFloat("##PositionX", &_obj->getTransform()->position.x, 0.1f, 0.0f, 0.0f, "%.2f");
+				ImGui::SameLine(); ImGui::DragFloat("##PositionY", &_obj->getTransform()->position.y, 0.1f, 0.0f, 0.0f, "%.2f");
+				ImGui::SameLine(); ImGui::DragFloat("##PositionZ", &_obj->getTransform()->position.z, 0.1f, 0.0f, 0.0f, "%.2f");
+
+				ImGui::Text("Rotation"); // TODO : glm::rotate
+
+				ImGui::DragFloat("##RotationX", &_obj->getTransform()->rotation.x, 0.1f, 0.0f, 0.0f, "%.2f");
+				ImGui::SameLine(); ImGui::DragFloat("##RotationY", &_obj->getTransform()->rotation.y, 0.1f, 0.0f, 0.0f, "%.2f");
+				ImGui::SameLine(); ImGui::DragFloat("##RotationZ", &_obj->getTransform()->rotation.z, 0.1f, 0.0f, 0.0f, "%.2f");
+				
+
+				ImGui::Text("Scale");
+
+				ImGui::DragFloat("##ScaleX", &_obj->getTransform()->scale.x, 0.1f, 0.0f, 0.0f, "%.2f");
+				ImGui::SameLine(); ImGui::DragFloat("##ScaleY", &_obj->getTransform()->scale.y, 0.1f, 0.0f, 0.0f, "%.2f");
+				ImGui::SameLine(); ImGui::DragFloat("##ScaleZ", &_obj->getTransform()->scale.z, 0.1f, 0.0f, 0.0f, "%.2f");
+
 
 			}
 
@@ -59,10 +81,13 @@ namespace Kranker3D {
 			}
 
 			ImGui::End();
+
+			//_obj->getTransform()->setPosition(glm::vec3(pos[0], pos[1], pos[2]));
+
 		};
 
-	private:
+
 
 	};
-	
+
 }
