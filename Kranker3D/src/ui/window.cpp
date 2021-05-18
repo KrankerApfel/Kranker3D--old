@@ -48,3 +48,7 @@ bool Kranker3D::Window::isOpen()
 {
 	return OpenGL_Context::getInstance(this)->isOpen();
 }		
+void  Kranker3D::Window::terminate() {
+	ImGUI_Context::getInstance(this)->terminate();
+	OpenGL_Context::getInstance(this)->terminate();
+}

@@ -251,7 +251,5 @@ int main()
 	// 3. terminate
 	s.terminate();
 	dragon_mesh.terminate();
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplGlfw_Shutdown();
-	ImGui::DestroyContext();
+	w.terminate();
 }
