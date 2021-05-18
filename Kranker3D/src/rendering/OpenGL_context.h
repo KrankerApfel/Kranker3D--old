@@ -3,7 +3,6 @@
 #include "IContext.h"
 #include "window.h"
 
-// /!\  this singleton is not thread safe !
 
 namespace Kranker3D
 {

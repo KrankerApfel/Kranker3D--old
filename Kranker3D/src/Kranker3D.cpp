@@ -79,11 +79,6 @@
 #include "stb_image_write.h"
 
 
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-#include "rendering/ImGUI_context.h"
-
 using namespace std;
 using namespace Kranker3D;
 
@@ -144,24 +139,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 		cam.FoV = 135.0f;
 }
 
-void callback()
-{
 
-	//render_callback();
-	{
-
-		ImGui::Begin("Properties");
-
-		ImGui::Text("Transform");
-		ImGui::PushItemWidth(150.f);
-		ImGui::Text("Youpi");
-		ImGui::Text("Oui");
-		ImGui::Text("So vaporwaaaave");
-
-
-		ImGui::End();
-	}
-}
 
 
 int main()
@@ -204,7 +182,8 @@ int main()
 	//ImGui_ImplGlfw_InitForOpenGL(w.window, true);
 	//ImGui_ImplOpenGL3_Init(glsl_version);
 
-
+	Panel p();
+	w.linkPanel(new Panel());
 
 	////-------------
 	static float pos[3] = { dragon_obj.getTransform()->getPosition().x, dragon_obj.getTransform()->getPosition().x,dragon_obj.getTransform()->getPosition().x };
