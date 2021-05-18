@@ -10,6 +10,10 @@ If anyone's interested in mentoring me on this project, here's my twitter accoun
 
 This project use OpenGL, GLAD, glm, GLFW, ImGUI and stb. You can use CMake to compile it.
 
+## Architecture
+
+Object Oriented architecture very similar to Unity. 
+
 ## Helping ressources 
 
 I'm learning from severals ressources, here the list below. 
