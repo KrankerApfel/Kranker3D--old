@@ -52,15 +52,15 @@ namespace Kranker3D {
 				const char* items[] = { "Phong", "Lambert", "Unlit" };
 				static const char* current_item = items[0];
 
-				if (ImGui::BeginCombo("##select material", current_item)) // The second parameter is the label previewed before opening the combo.
+				if (ImGui::BeginCombo("##select material", current_item)) 
 				{
 					for (int n = 0; n < IM_ARRAYSIZE(items); n++)
 					{
-						bool is_selected = (current_item == items[n]); // You can store your selection however you want, outside or inside your objects
+						bool is_selected = (current_item == items[n]);
 						if (ImGui::Selectable(items[n], is_selected)) {
 							current_item = items[n];
 							if (is_selected)
-								ImGui::SetItemDefaultFocus();   // You may set the initial focus when opening the combo (scrolling + for keyboard navigation support)7
+								ImGui::SetItemDefaultFocus();  
 
 						}
 
@@ -81,8 +81,6 @@ namespace Kranker3D {
 			}
 
 			ImGui::End();
-
-			//_obj->getTransform()->setPosition(glm::vec3(pos[0], pos[1], pos[2]));
 
 		};
 

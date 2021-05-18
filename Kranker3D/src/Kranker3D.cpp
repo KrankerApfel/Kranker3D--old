@@ -140,9 +140,6 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 		cam.FoV = 135.0f;
 }
 
-
-
-
 int main()
 {
 
@@ -167,63 +164,17 @@ int main()
 	w.setBackgroundColor(0.99, 0.90, 0.94);
 	w.setCursorPosCallback(mouse_callback);
 	w.setMouseScrollCallback(scroll_callback);
-	////-------------
-	// // Setup Dear ImGui context
-	//IMGUI_CHECKVERSION();
-	//ImGui::CreateContext();
-	//ImGuiIO& io = ImGui::GetIO(); (void)io;
-	////io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	////io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-
-	//// Setup Dear ImGui style
-	//ImGui::StyleColorsDark();
-
-	//// Setup Platform/Renderer backends
-	//const char* glsl_version = "#version 130";
-	//ImGui_ImplGlfw_InitForOpenGL(w.window, true);
-	//ImGui_ImplOpenGL3_Init(glsl_version);
+	
 	PropertyPanel* p = new PropertyPanel();
 	p->linkObject(&dragon_obj);
 	w.linkPanel(p);
-
-	////-------------
-	/*static float pos[3] = { dragon_obj.getTransform()->getPosition().x, dragon_obj.getTransform()->getPosition().x,dragon_obj.getTransform()->getPosition().x };
-	static float scale[3] = { dragon_obj.getTransform()->getScale().x, dragon_obj.getTransform()->getScale().x,dragon_obj.getTransform()->getScale().x };*/
-
-	
+			
 	while (w.isOpen())
 	{
-		//// Start the Dear ImGui frame
-		//ImGui_ImplOpenGL3_NewFrame();
-		//ImGui_ImplGlfw_NewFrame();
-		//ImGui::NewFrame();
-
-
-		//// PROPERTIES PANNEL ( TODO : pannel class, imgui wrapper )
-		//{
-
-		//	ImGui::Begin("Properties");
-
-		//	ImGui::Text("Transform");
-		//	ImGui::PushItemWidth(150.f);
-
-		//	ImGui::InputFloat3("Position : ", pos);
-		//	ImGui::InputFloat3("Scale : ", scale);
-
-		//	ImGui::End();
-		//}
-
-
-		//// Rendering
-		//ImGui::Render();
-		//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
+		
 		w.run();
 
-		//dragon_obj.getTransform()->rotate(10 * glfwGetTime(), glm::vec3(0, 1, 0));
-		//dragon_obj.getTransform()->setPosition(glm::vec3(pos[0], pos[1], pos[2]));
-		//dragon_obj.getTransform()->setScale(glm::vec3(scale[0], scale[1], scale[2]));
+	
 		s.setMat4("transform", dragon_obj.getTransform()->getMatrix());
 		s.setMat4("view", cam.getView());
 		s.setMat4("projection", cam.getProj());
