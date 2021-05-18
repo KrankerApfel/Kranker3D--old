@@ -66,7 +66,7 @@
 ####################################################################################################################*/
 
 #include "stdafx.h"
-#include "ui/window.h"
+#include "rendering/window.h"
 #include "core/rendering/shader.h"
 #include "core/rendering/mesh.h"
 #include "core/rendering/texture.h"
@@ -147,15 +147,20 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 void callback()
 {
 
-	ImGui::Begin("Properties");
+	//render_callback();
+	{
 
-	ImGui::Text("Transform");
-	ImGui::PushItemWidth(150.f);
+		ImGui::Begin("Properties");
 
-	ImGui::InputFloat3("Position : ", 0);
-	ImGui::InputFloat3("Scale : ", 0);
+		ImGui::Text("Transform");
+		ImGui::PushItemWidth(150.f);
+		ImGui::Text("Youpi");
+		ImGui::Text("Oui");
+		ImGui::Text("So vaporwaaaave");
 
-	ImGui::End();
+
+		ImGui::End();
+	}
 }
 
 
@@ -204,7 +209,6 @@ int main()
 	////-------------
 	static float pos[3] = { dragon_obj.getTransform()->getPosition().x, dragon_obj.getTransform()->getPosition().x,dragon_obj.getTransform()->getPosition().x };
 	static float scale[3] = { dragon_obj.getTransform()->getScale().x, dragon_obj.getTransform()->getScale().x,dragon_obj.getTransform()->getScale().x };
-
 
 
 	while (w.isOpen())

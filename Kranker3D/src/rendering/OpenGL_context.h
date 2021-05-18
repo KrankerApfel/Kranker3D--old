@@ -1,7 +1,7 @@
 #pragma once 
 #include  <mutex>
 #include "IContext.h"
-#include "../ui/window.h"
+#include "window.h"
 
 // /!\  this singleton is not thread safe !
 

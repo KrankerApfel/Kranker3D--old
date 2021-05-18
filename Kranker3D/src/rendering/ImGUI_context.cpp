@@ -74,8 +74,7 @@ void Kranker3D::ImGUI_Context::preRender()
 
 void Kranker3D::ImGUI_Context::render()
 {
-   
-
+ 
 }
 
 void Kranker3D::ImGUI_Context::postRender()

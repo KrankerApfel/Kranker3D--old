@@ -1,7 +1,7 @@
 #pragma once 
 #include  <mutex>
 #include "IContext.h"
-#include "../ui/window.h"
+#include "window.h"
 
 // /!\  this singleton is not thread safe !
 
@@ -15,12 +15,12 @@ namespace Kranker3D
 		static std::mutex _mutex;
 
 	public:
-		ImGUI_Context(Window* window) { _window = window; };
+		ImGUI_Context(Window* window) : _window(window){ };
 		~ImGUI_Context() {};
 		ImGUI_Context(ImGUI_Context& other) = delete; // not cloneable
 		void operator=(const ImGUI_Context&) = delete; // not assigneable
 		static ImGUI_Context* getInstance(Window* window);
-
+ 
 		bool isOpen();
 
 		void init() override;

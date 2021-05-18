@@ -2,8 +2,8 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-#include "../rendering/OpenGL_context.h"
-#include "../rendering/ImGUI_context.h"
+#include "OpenGL_context.h"
+#include "ImGUI_context.h"
 
 
 Kranker3D::Window::Window(int _width, int _height, std::string& _title, GLFWmonitor* _monitor, GLFWwindow* _share): 
@@ -21,24 +21,11 @@ void Kranker3D::Window::run() //void(*render_callback)()
 	OpenGL_Context::getInstance(this)->preRender();
 	ImGUI_Context::getInstance(this)->preRender();
 
-	//render_callback();
-	{
-
-		ImGui::Begin("Properties");
-
-		ImGui::Text("Transform");
-		ImGui::PushItemWidth(150.f);
-		ImGui::Text("Youpi");
-		ImGui::Text("Oui");
-		ImGui::Text("So vaporwaaaave");
-
-
-		ImGui::End();
-	}
+	
 
 
 	OpenGL_Context::getInstance(this)->render();
-	ImGUI_Context::getInstance(this)->render();
+	ImGUI_Context::getInstance(this)->render(); // call widget render callback
 
 	ImGUI_Context::getInstance(this)->postRender();
 	OpenGL_Context::getInstance(this)->postRender();
