@@ -77,6 +77,7 @@
 
 #include "stb_image.h"
 #include "stb_image_write.h"
+#include "ui/propertyPanel.h"
 
 
 using namespace std;
@@ -181,9 +182,9 @@ int main()
 	//const char* glsl_version = "#version 130";
 	//ImGui_ImplGlfw_InitForOpenGL(w.window, true);
 	//ImGui_ImplOpenGL3_Init(glsl_version);
+	Panel* p = new PropertyPanel();
 
-	Panel p();
-	w.linkPanel(new Panel());
+	w.linkPanel(p);
 
 	////-------------
 	static float pos[3] = { dragon_obj.getTransform()->getPosition().x, dragon_obj.getTransform()->getPosition().x,dragon_obj.getTransform()->getPosition().x };
