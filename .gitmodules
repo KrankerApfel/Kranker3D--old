@@ -7,9 +7,6 @@
 [submodule "Kranker3D/vendor/glfw"]
 	path = Kranker3D/vendor/glfw
 	url = https://github.com/glfw/glfw.git
-[submodule "Kranker3D/vendor/imgui"]
-	path = Kranker3D/vendor/imgui
-	url = https://github.com/ocornut/imgui.git
 [submodule "Kranker3D/vendor/stb"]
 	path = Kranker3D/vendor/stb
 	url = https://github.com/nothings/stb.git

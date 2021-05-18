@@ -5,33 +5,29 @@
 namespace Kranker3D
 {
 	class Transform {
-	private:
-		glm::vec3 _position;
-		glm::vec3 _scale;
-		glm::quat _rotation;
+		
 
 	public:
+
+		glm::vec3 position;
+		glm::vec3 scale;
+		glm::quat rotation;
+
 		Transform();
-		inline glm::vec3 getPosition() const { return _position; };
-		inline glm::vec3 getScale()  const { return _scale; };
-		inline glm::quat getRotation()  const { return _rotation; };
-
-		inline  void setPosition(glm::vec3 position) { _position = position; };
-		inline void   setScale(glm::vec3 scale) { _scale = scale; };
-
+		
 		glm::vec3 getForward() const;
 		inline glm::vec3 getRight() const { return glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), getForward()); }
 		inline glm::vec3 getUp() const { return glm::cross(getForward(), getRight()); };
 
 		inline glm::mat4 getMatrix() const
 		{
-			return glm::scale(glm::translate(_position) * glm::toMat4(_rotation), _scale);
+			return glm::scale(glm::translate(position) * glm::toMat4(rotation), scale);
 		};
 
 		void translate(glm::vec3 translate);
-		void scale(glm::vec3 scale);
+		void rescale(float scale_factor);
 		void rotate(float degree, glm::vec3 rotate);
-		inline void lookAt(glm::vec3 direction) { _rotation = glm::quat(glm::lookAt(_position, direction, getUp())); };
+		inline void lookAt(glm::vec3 direction) { rotation = glm::quat(glm::lookAt(position, direction, getUp())); };
 		void lerp(glm::vec3 origine, glm::vec3 goal, float step);
 
 	};
