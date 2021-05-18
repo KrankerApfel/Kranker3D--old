@@ -23,10 +23,10 @@ void Kranker3D::Window::run() //void(*render_callback)()
 	ImGUI_Context::getInstance(this)->preRender();
 
 	
-	std::for_each(_panels.begin(), _panels.end(), [](Panel* p) {p->render(); });
 
-	OpenGL_Context::getInstance(this)->render();
+	OpenGL_Context::getInstance(this)->render(); // /!\ call poll event => must be call befor imgui widget render to enable input event;
 	ImGUI_Context::getInstance(this)->render(); // call widget render callback
+	std::for_each(_panels.begin(), _panels.end(), [](Panel* p) {p->render(); });
 
 	ImGUI_Context::getInstance(this)->postRender();
 	OpenGL_Context::getInstance(this)->postRender();
