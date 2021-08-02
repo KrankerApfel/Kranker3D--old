@@ -8,7 +8,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-Kranker3D::OpenGL_Context::OpenGL_Context(std::shared_ptr<Kranker3D::Window> window) : _window(window){}
+Kranker3D::OpenGL_Context::OpenGL_Context(std::shared_ptr<Kranker3D::Window> window) : _window(window) {}
 
 Kranker3D::OpenGL_Context& Kranker3D::OpenGL_Context::getInstance(std::shared_ptr<Window> window) {
 	static std::unique_ptr<OpenGL_Context> instance(new OpenGL_Context(window));
@@ -17,7 +17,7 @@ Kranker3D::OpenGL_Context& Kranker3D::OpenGL_Context::getInstance(std::shared_pt
 
 bool Kranker3D::OpenGL_Context::isOpen()
 {
-	return !glfwWindowShouldClose(_window->window);
+	return !glfwWindowShouldClose(_window->window.get());
 }
 
 void Kranker3D::OpenGL_Context::init()
@@ -39,12 +39,12 @@ void Kranker3D::OpenGL_Context::init()
 
 	// 2. Attach openGL context to GLFW window
 	{
-		_window->window = glfwCreateWindow(_window->width, _window->height, _window->title.c_str(), _window->monitor, _window->share);
+		_window->window = std::shared_ptr<GLFWwindow>(glfwCreateWindow(_window->width, _window->height, _window->title.c_str(), _window->monitor.get(), _window->share.get()));
 		if (!_window->window) {
 			spdlog::error("--- GLFW : Window creation failed.");
 			glfwTerminate();
 			exit(EXIT_FAILURE);
-		}		glfwMakeContextCurrent(_window->window);
+		}		glfwMakeContextCurrent(_window->window.get());
 	}
 
 	// .3 Init Glad
@@ -59,11 +59,11 @@ void Kranker3D::OpenGL_Context::init()
 	//.4 Init callbacks and set options
 	{
 		glViewport(0, 0, _window->width, _window->height);
-		glfwSetFramebufferSizeCallback(_window->window, framebuffer_size_callback);
+		glfwSetFramebufferSizeCallback(_window->window.get(), [](GLFWwindow* window, int w, int h) {glViewport(0, 0, w, h); });
 		glEnable(GL_DEPTH_TEST);
-		glfwSetInputMode(_window->window, GLFW_STICKY_MOUSE_BUTTONS, GLFW_TRUE);
+		glfwSetInputMode(_window->window.get(), GLFW_STICKY_MOUSE_BUTTONS, GLFW_TRUE);
 	}
-	
+
 }
 
 void Kranker3D::OpenGL_Context::preRender()
@@ -73,7 +73,7 @@ void Kranker3D::OpenGL_Context::preRender()
 
 void Kranker3D::OpenGL_Context::render()
 {
-	glfwSwapBuffers(_window->window);
+	glfwSwapBuffers(_window->window.get());
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 

@@ -50,7 +50,7 @@ void Kranker3D::ImGUI_Context::init()
 
     // Setup Platform/Renderer backends
     const char* glsl_version = "#version 130";
-    ImGui_ImplGlfw_InitForOpenGL(_window->window, true);
+    ImGui_ImplGlfw_InitForOpenGL(_window->window.get(), true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 }
 

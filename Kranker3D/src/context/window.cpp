@@ -6,7 +6,7 @@
 #include "ImGUI_context.h"
 #include <algorithm>
 
-Kranker3D::Window::Window(int _width, int _height, std::string& _title, GLFWmonitor* _monitor, GLFWwindow* _share): 
+Kranker3D::Window::Window(int _width, int _height, std::string& _title, std::shared_ptr<GLFWmonitor> _monitor, std::shared_ptr<GLFWwindow> _share):
 	width(_width), height(_height), title(_title), monitor(_monitor), share(_share), window(NULL)
 {}
 
