@@ -73,13 +73,12 @@ void Kranker3D::OpenGL_Context::init()
 
 void Kranker3D::OpenGL_Context::preRender()
 {
-
+	glfwPollEvents();
 }
 
 void Kranker3D::OpenGL_Context::render()
 {
 	glfwSwapBuffers(_window->window);
-	glfwPollEvents();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
