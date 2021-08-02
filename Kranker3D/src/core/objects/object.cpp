@@ -2,10 +2,10 @@
 
 Kranker3D::Object::Object()
 {
-	_transform = Transform();
+	_transform = std::make_shared<Kranker3D::Transform>();
 }
 
-Kranker3D::Object::Object(Transform t)
+Kranker3D::Object::Object(std::shared_ptr<Kranker3D::Transform> t)
 {
 	_transform =t;
 
