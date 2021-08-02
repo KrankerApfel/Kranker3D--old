@@ -16,10 +16,10 @@ namespace Kranker3D {
 		void run();
 		bool isOpen();
 		void terminate();
-		inline void setCursorPosCallback(GLFWcursorposfun  cursor_position_callback) { glfwSetCursorPosCallback(window.get(), cursor_position_callback); }
-		inline void setMouseScrollCallback(GLFWscrollfun  scroll_callback) { glfwSetScrollCallback(window.get(), scroll_callback); }
-		inline void setBackgroundColor(float r, float g, float b) { glClearColor(r, g, b, 1.0f); }
-		inline void linkPanel(std::shared_ptr<Panel> const panel) { _panels.push_back(panel); }
+		void setCursorPosCallback(GLFWcursorposfun  cursor_position_callback);
+		void setMouseScrollCallback(GLFWscrollfun  scroll_callback);
+		void setBackgroundColor(float r, float g, float b);
+		void linkPanel(std::shared_ptr<Panel> const panel);
 		unique_GLFWwindow_ptr window;
 		int width, height;
 		std::string& title;

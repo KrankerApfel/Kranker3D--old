@@ -41,3 +41,23 @@ void  Kranker3D::Window::terminate() {
 	ImGUI_Context::getInstance(shared_from_this()).terminate();
 	OpenGL_Context::getInstance(shared_from_this()).terminate();
 }
+
+void Kranker3D::Window::setCursorPosCallback(GLFWcursorposfun cursor_position_callback)
+{
+	glfwSetCursorPosCallback(window.get(), cursor_position_callback);
+}
+
+void Kranker3D::Window::setMouseScrollCallback(GLFWscrollfun scroll_callback)
+{
+	glfwSetScrollCallback(window.get(), scroll_callback);
+}
+
+void Kranker3D::Window::setBackgroundColor(float r, float g, float b)
+{
+	glClearColor(r, g, b, 1.0f);
+}
+
+void Kranker3D::Window::linkPanel(std::shared_ptr<Panel> const panel)
+{
+	_panels.push_back(panel);
+}
