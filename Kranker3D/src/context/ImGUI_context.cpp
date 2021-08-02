@@ -5,11 +5,13 @@
 #include "imgui_impl_opengl3.h"
 #include "ImGUI_context.h"
 
-Kranker3D::ImGUI_Context& Kranker3D::ImGUI_Context::getInstance(Window* window)
+Kranker3D::ImGUI_Context& Kranker3D::ImGUI_Context::getInstance(std::shared_ptr<Window> window)
 {
     static std::unique_ptr<ImGUI_Context> instance(new ImGUI_Context(window));
     return *instance;
 }
+
+Kranker3D::ImGUI_Context::ImGUI_Context(std::shared_ptr<Window> window) : _window(window){}
 
 void Kranker3D::ImGUI_Context::init()
 {

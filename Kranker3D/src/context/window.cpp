@@ -8,36 +8,36 @@
 
 Kranker3D::Window::Window(int _width, int _height, std::string& _title, GLFWmonitor* _monitor, GLFWwindow* _share): 
 	width(_width), height(_height), title(_title), monitor(_monitor), share(_share), window(NULL)
-{
-	
-	OpenGL_Context::getInstance(this);
-	OpenGL_Context::getInstance(this).init();
-	ImGUI_Context::getInstance(this);
-	ImGUI_Context::getInstance(this).init();
+{}
 
+void Kranker3D::Window::init()
+{
+	OpenGL_Context::getInstance(shared_from_this());
+	OpenGL_Context::getInstance(shared_from_this()).init();
+	ImGUI_Context::getInstance(shared_from_this());
+	ImGUI_Context::getInstance(shared_from_this()).init();
 }
 
-void Kranker3D::Window::run() //void(*render_callback)()
+void Kranker3D::Window::run()  
 {
-	OpenGL_Context::getInstance(this).preRender();
-	ImGUI_Context::getInstance(this).preRender();
-
+	OpenGL_Context::getInstance(shared_from_this()).preRender();
+	ImGUI_Context::getInstance(shared_from_this()).preRender();
 	
+	OpenGL_Context::getInstance(shared_from_this()).render();
 
-	OpenGL_Context::getInstance(this).render(); // /!\ call poll event => must be call befor imgui widget render to enable input event;
-	std::for_each(_panels.begin(), _panels.end(), [](Panel* p) {p->render(); });
+	std::for_each(_panels.begin(), _panels.end(), [](std::shared_ptr<Panel> p) {p->render(); });
 
-	ImGUI_Context::getInstance(this).render(); // call widget render callback
+	ImGUI_Context::getInstance(shared_from_this()).render();
 
-	ImGUI_Context::getInstance(this).postRender();
-	OpenGL_Context::getInstance(this).postRender();
+	ImGUI_Context::getInstance(shared_from_this()).postRender();
+	OpenGL_Context::getInstance(shared_from_this()).postRender();
 }
 
 bool Kranker3D::Window::isOpen()
 {
-	return OpenGL_Context::getInstance(this).isOpen();
+	return OpenGL_Context::getInstance(shared_from_this()).isOpen();
 }		
 void  Kranker3D::Window::terminate() {
-	ImGUI_Context::getInstance(this).terminate();
-	OpenGL_Context::getInstance(this).terminate();
+	ImGUI_Context::getInstance(shared_from_this()).terminate();
+	OpenGL_Context::getInstance(shared_from_this()).terminate();
 }

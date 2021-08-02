@@ -7,10 +7,10 @@ namespace Kranker3D
 	class ImGUI_Context : IRenderingContext
 	{
 	private:
-		Window* _window;
+		std::shared_ptr<Window> _window;
 
 	public:
-		ImGUI_Context(Window* window) : _window(window){ };
+		ImGUI_Context(std::shared_ptr<Window> window);
 		~ImGUI_Context() {};
 
 		// not cloneable, assigneable nor moveable
@@ -19,7 +19,7 @@ namespace Kranker3D
 		ImGUI_Context(ImGUI_Context&& other) = delete; 
 		ImGUI_Context& operator=( ImGUI_Context&&) = delete; 
 
-		static ImGUI_Context& getInstance(Window* window);
+		static ImGUI_Context& getInstance(std::shared_ptr<Window> window);
  
 		void init() override;
 		void preRender() override;

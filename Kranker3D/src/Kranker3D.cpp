@@ -65,6 +65,7 @@
 #														     #						   							 	 #
 ####################################################################################################################*/
 
+#include <memory>
 #include "stdafx.h"
 #include "context/window.h"
 #include "core/rendering/shader.h"
@@ -145,7 +146,8 @@ int main()
 
 	// 1. initialization
 	std::string title = "Gegege no Kitaro";
-	Window w(800, 800, title);
+	auto w = std::make_shared<Window>(800, 800, title);
+	w->init();
 
 	Shader s("D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\shaders\\test_vertex.glsl", "D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\shaders\\test_fragment.glsl");
 	Texture t("D:\\Dev\\GPUdev\\Kranker3D\\Kranker3D\\resources\\textures\\test.jpg");
@@ -161,20 +163,20 @@ int main()
 	dragon_obj.getTransform()->rescale(0.25f);
 
 	const float sp = .005f;
-	w.setBackgroundColor(0.99, 0.90, 0.94);
-	w.setCursorPosCallback(mouse_callback);
-	w.setMouseScrollCallback(scroll_callback);
-	
-	PropertyPanel* p = new PropertyPanel();
-	p->linkObject(&dragon_obj);
-	w.linkPanel(p);
-			
-	while (w.isOpen())
-	{
-		
-		w.run();
+	w->setBackgroundColor(0.99, 0.90, 0.94);
+	w->setCursorPosCallback(mouse_callback);
+	w->setMouseScrollCallback(scroll_callback);
 
-	
+	auto p = std::make_shared<PropertyPanel>();
+	p->linkObject(&dragon_obj);
+	w->linkPanel(p);
+
+	while (w->isOpen())
+	{
+
+		w->run();
+
+
 		s.setMat4("transform", dragon_obj.getTransform()->getMatrix());
 		s.setMat4("view", cam.getView());
 		s.setMat4("projection", cam.getProj());
@@ -186,5 +188,5 @@ int main()
 	// 3. terminate
 	s.terminate();
 	dragon_mesh.terminate();
-	w.terminate();
+	w->terminate();
 }
