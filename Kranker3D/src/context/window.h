@@ -21,14 +21,6 @@ namespace Kranker3D {
 		std::string& title;
 		GLFWmonitor* monitor;
 		GLFWwindow* share;
-	
-
-	/*private:
-		bool _fullscreen;
-		bool _vsync;
-
-		void initContext();
-		void initGlad();*/
 
 	};
 }

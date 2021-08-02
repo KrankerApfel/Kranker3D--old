@@ -7,11 +7,10 @@ namespace Kranker3D {
 	class Panel {
 	public:
 		const char* title;
-
 		Panel() { title = "Panel title"; };
-		virtual void render() {};
+		virtual void render() = 0;
 
-			
+
 	};
 
 

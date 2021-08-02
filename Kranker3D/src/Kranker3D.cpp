@@ -66,7 +66,7 @@
 ####################################################################################################################*/
 
 #include "stdafx.h"
-#include "rendering/window.h"
+#include "context/window.h"
 #include "core/rendering/shader.h"
 #include "core/rendering/mesh.h"
 #include "core/rendering/texture.h"

@@ -1,22 +1,14 @@
 #pragma once 
+#include  <memory>
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "ImGUI_context.h"
 
-Kranker3D::ImGUI_Context* Kranker3D::ImGUI_Context::instance = nullptr;
-std::mutex Kranker3D::ImGUI_Context::_mutex;
-
-
-Kranker3D::ImGUI_Context* Kranker3D::ImGUI_Context::getInstance(Window* window)
+Kranker3D::ImGUI_Context& Kranker3D::ImGUI_Context::getInstance(Window* window)
 {
-    std::lock_guard<std::mutex> lock(_mutex);
-
-	if (instance == nullptr)
-	{
-		instance = new ImGUI_Context(window);
-	}
-	return instance;
+    static std::unique_ptr<ImGUI_Context> instance(new ImGUI_Context(window));
+    return *instance;
 }
 
 void Kranker3D::ImGUI_Context::init()
@@ -62,31 +54,18 @@ void Kranker3D::ImGUI_Context::init()
 
 void Kranker3D::ImGUI_Context::preRender()
 {
-
-    // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
-     
-
-    
+    ImGui::NewFrame();       
 }
 
 void Kranker3D::ImGUI_Context::render()
 {
- 
-}
-
-void Kranker3D::ImGUI_Context::postRender()
-{
-    // Rendering
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-    ImGuiIO& io = ImGui::GetIO();
-
- 
 }
+
+void Kranker3D::ImGUI_Context::postRender(){}
 
 void Kranker3D::ImGUI_Context::terminate()
 {

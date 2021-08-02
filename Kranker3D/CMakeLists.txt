@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 
 project(Kranker3D)
-#find_package(imgui CONFIG)
-
-
 
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")

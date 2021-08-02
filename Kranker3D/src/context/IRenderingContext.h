@@ -2,8 +2,7 @@
 
 namespace Kranker3D
 {
-	class IContext {
-
+	class IRenderingContext {
 
 	public:
 	   virtual void init() = 0;

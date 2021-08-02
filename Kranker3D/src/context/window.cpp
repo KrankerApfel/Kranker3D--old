@@ -11,32 +11,33 @@ Kranker3D::Window::Window(int _width, int _height, std::string& _title, GLFWmoni
 {
 	
 	OpenGL_Context::getInstance(this);
-	OpenGL_Context::getInstance(this)->init();
+	OpenGL_Context::getInstance(this).init();
 	ImGUI_Context::getInstance(this);
-	ImGUI_Context::getInstance(this)->init();
+	ImGUI_Context::getInstance(this).init();
 
 }
 
 void Kranker3D::Window::run() //void(*render_callback)()
 {
-	OpenGL_Context::getInstance(this)->preRender();
-	ImGUI_Context::getInstance(this)->preRender();
+	OpenGL_Context::getInstance(this).preRender();
+	ImGUI_Context::getInstance(this).preRender();
 
 	
 
-	OpenGL_Context::getInstance(this)->render(); // /!\ call poll event => must be call befor imgui widget render to enable input event;
-	ImGUI_Context::getInstance(this)->render(); // call widget render callback
+	OpenGL_Context::getInstance(this).render(); // /!\ call poll event => must be call befor imgui widget render to enable input event;
 	std::for_each(_panels.begin(), _panels.end(), [](Panel* p) {p->render(); });
 
-	ImGUI_Context::getInstance(this)->postRender();
-	OpenGL_Context::getInstance(this)->postRender();
+	ImGUI_Context::getInstance(this).render(); // call widget render callback
+
+	ImGUI_Context::getInstance(this).postRender();
+	OpenGL_Context::getInstance(this).postRender();
 }
 
 bool Kranker3D::Window::isOpen()
 {
-	return OpenGL_Context::getInstance(this)->isOpen();
+	return OpenGL_Context::getInstance(this).isOpen();
 }		
 void  Kranker3D::Window::terminate() {
-	ImGUI_Context::getInstance(this)->terminate();
-	OpenGL_Context::getInstance(this)->terminate();
+	ImGUI_Context::getInstance(this).terminate();
+	OpenGL_Context::getInstance(this).terminate();
 }

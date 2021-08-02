@@ -1,23 +1,15 @@
+#include <memory>
 #include "OpenGL_context.h"
 #include "../stdafx.h"
-#include "OpenGL_context.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
 }
 
-Kranker3D::OpenGL_Context* Kranker3D::OpenGL_Context::instance = nullptr;
-std::mutex Kranker3D::OpenGL_Context::_mutex;
-
-
-Kranker3D::OpenGL_Context* Kranker3D::OpenGL_Context::getInstance(Window* window) {
-	std::lock_guard<std::mutex> lock(_mutex);
-	if (instance == nullptr)
-	{
-		instance = new OpenGL_Context(window);
-	}
-	return instance;
+Kranker3D::OpenGL_Context& Kranker3D::OpenGL_Context::getInstance(Window* window) {
+	static std::unique_ptr<OpenGL_Context> instance(new OpenGL_Context(window));
+	return *instance;
 };
 
 bool Kranker3D::OpenGL_Context::isOpen()
