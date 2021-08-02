@@ -13,7 +13,7 @@ namespace Kranker3D
 
 	public:
 		OpenGL_Context(std::shared_ptr<Window> window);
-		~OpenGL_Context() {};
+		~OpenGL_Context() = default;
 
 		OpenGL_Context(OpenGL_Context& other) = delete; 
 		OpenGL_Context& operator=(const OpenGL_Context&) = delete; 
