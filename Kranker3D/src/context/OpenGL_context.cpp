@@ -3,11 +3,6 @@
 #include "../stdafx.h"
 
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}
-
 Kranker3D::OpenGL_Context::OpenGL_Context(std::shared_ptr<Kranker3D::Window> window) : _window(window) {}
 
 Kranker3D::OpenGL_Context& Kranker3D::OpenGL_Context::getInstance(std::shared_ptr<Window> window) {
