@@ -11,7 +11,6 @@ namespace Kranker3D {
 	protected :
 		std::shared_ptr<Transform> _transform;
 
-
 	public:
 
 		Object();
