@@ -156,11 +156,11 @@ int main()
 	vector<unsigned int> indices;
 
 	Mesh dragon_mesh = setDragoon(vertices, indices);
-	Object dragon_obj;
-	dragon_obj.getTransform()->translate(glm::vec3(0.0f, -1, 0.0f));
+	auto dragon_obj = make_shared<Object>();
+	dragon_obj->getTransform()->translate(glm::vec3(0.0f, -1, 0.0f));
 
-	dragon_obj.getTransform()->rotate(45, glm::vec3(0.0f, 1, 0.0f));
-	dragon_obj.getTransform()->rescale(0.25f);
+	dragon_obj->getTransform()->rotate(45, glm::vec3(0.0f, 1, 0.0f));
+	dragon_obj->getTransform()->rescale(0.25f);
 
 	const float sp = .005f;
 	w->setBackgroundColor(0.99, 0.90, 0.94);
@@ -168,7 +168,7 @@ int main()
 	w->setMouseScrollCallback(scroll_callback);
 
 	auto p = std::make_shared<PropertyPanel>();
-	p->linkObject(&dragon_obj);
+	p->linkObject(dragon_obj);
 	w->linkPanel(p);
 
 	while (w->isOpen())
@@ -177,7 +177,7 @@ int main()
 		w->run();
 
 
-		s.setMat4("transform", dragon_obj.getTransform()->getMatrix());
+		s.setMat4("transform", dragon_obj->getTransform()->getMatrix());
 		s.setMat4("view", cam.getView());
 		s.setMat4("projection", cam.getProj());
 		s.setFloat("iTime", glfwGetTime());

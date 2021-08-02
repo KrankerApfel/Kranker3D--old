@@ -1,22 +1,24 @@
 #pragma once
 #include <glm/gtx/transform.hpp>
+#include <memory>
 #include "panel.h"
 #include "../core/objects/object.h"
 namespace Kranker3D {
 	class PropertyPanel : public Panel
 	{
 	private:
-		Object* _obj;
+		std::shared_ptr<Object> _obj;
 
 	public:
 
-		PropertyPanel() { title = "Property"; _obj = nullptr; };
+		PropertyPanel();
+		PropertyPanel(std::string _title);
 
-		void linkObject(Object* const obj) { _obj = obj; }
+		void linkObject(std::shared_ptr<Object> const obj) { _obj = obj; }
 		void render() override {
 
 
-			ImGui::Begin(title);
+			ImGui::Begin(title.c_str());
 
 			if (ImGui::CollapsingHeader("Transform"))
 			{
