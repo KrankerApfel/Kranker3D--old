@@ -3,6 +3,8 @@
 #include "../stdafx.h"
 
 
+
+
 Kranker3D::OpenGL_Context::OpenGL_Context(std::shared_ptr<Kranker3D::Window> window) : _window(window) {}
 
 Kranker3D::OpenGL_Context& Kranker3D::OpenGL_Context::getInstance(std::shared_ptr<Window> window) {
@@ -34,7 +36,7 @@ void Kranker3D::OpenGL_Context::init()
 
 	// 2. Attach openGL context to GLFW window
 	{
-		_window->window = std::shared_ptr<GLFWwindow>(glfwCreateWindow(_window->width, _window->height, _window->title.c_str(), _window->monitor.get(), _window->share.get()));
+		_window->window = unique_GLFWwindow_ptr(glfwCreateWindow(_window->width, _window->height, _window->title.c_str(), _window->monitor.get(), _window->share.get()));
 		if (!_window->window) {
 			spdlog::error("--- GLFW : Window creation failed.");
 			glfwTerminate();
@@ -80,5 +82,6 @@ void Kranker3D::OpenGL_Context::terminate()
 {
 	spdlog::info("--- GLFW : Terminate window");
 	glfwTerminate();
+
 }
 
