@@ -63,10 +63,6 @@ I'm learning from severals ressources, here the list below.
 - [ ] Material class 
 - [ ] Texture
 - [ ] Renderer class
-- [ ] Scene classe
-- [ ] Raytracing
-- [ ] SDF
-- [ ] Raymarching
 
 ## Materials
 - [ ] Phong
