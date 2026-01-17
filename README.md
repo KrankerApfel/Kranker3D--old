@@ -1,6 +1,5 @@
 # Kranker3D - Simple rendering engine 
-
-![cover](Screens/cover.png)
+<img width="1093" height="681" alt="Kranker3D" src="https://github.com/user-attachments/assets/329d0f84-4e66-447e-b1c2-39559892e8a8" />
 
 I am building this 3D rendering engine to learn openGL and make demoscene.
 I started with absolutely no knowledge about GPU programming, so it's quite possible that there's a lot of flaws in this project. 
